@@ -91,15 +91,15 @@ button {
   flex-direction: column;
   justify-content: space-between;
 }
-.day:hover {
+.day:hover,.day1:hover {
   background-color: #e8faed;
 }
 
-.day + .currentDay {
+.day + .currentDay ,.day1 + .currentDay {
   background-color:#e8f4fa;
 }
 .event {
-  font-size: 10px;
+  font-size: 15px;
   padding: 3px;
   background-color: #58bae4;
   color: white;
@@ -121,7 +121,7 @@ button {
   width: 350px;
   top: 100px;
   left: calc(50% - 175px);
-  position: absolute;
+  position: fixed;
   font-family: sans-serif;
 }
 #eventTitleInput {
@@ -152,9 +152,9 @@ button {
   z-index: 10;
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0,0,0,0.8);
 }
 #div1{
-  /* background-color: red; */
+  background-color: red;
 }

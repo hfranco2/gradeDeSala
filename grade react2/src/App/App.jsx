@@ -22,13 +22,14 @@ export const App = () => {
          JSON.parse(localStorage.getItem('events')) : []
     );
     const [events1,setEvents1] = useState(
-      localStorage.getItem('events') ?
-       JSON.parse(localStorage.getItem('events')) : []
+      localStorage.getItem('events1') ?
+       JSON.parse(localStorage.getItem('events1')) : []
   );
     const eventForDate = id => events.find(e => e.id === id)
     useEffect(() =>{
         localStorage.setItem('events', JSON.stringify(events));
     },[events]);
+    
 
     useEffect(() => {
     //   const dt = new Date();
@@ -47,12 +48,18 @@ export const App = () => {
      }
      setDays(daysArr)
     },[events]);
+
+    const eventForDate1 = id => events1.find(e => e.id === id)
+    useEffect(() =>{
+        localStorage.setItem('events1', JSON.stringify(events1));
+    },[events1]);
+
     useEffect(() => {
        const days1Arr =[];
        for(let i = 1; i<45;i++){
         days1Arr.push({
           value: 'div'+i,
-          event: eventForDate(i),
+          event: eventForDate1(i),
           id: i,
           
         });
@@ -159,7 +166,7 @@ export const App = () => {
             key = {index}
             day = {d}
             onClick={() =>{                
-              setClicked(d.id);
+              setClicked(d);
                 
             }
             }
@@ -211,13 +218,13 @@ export const App = () => {
     </div>
   </div>
   {
-    clicked && !eventForDate(clicked) &&
+    clicked && !eventForDate(clicked) && 
     <NewEventModal 
     onClose={() => setClicked(null)}
     onSave={
       title =>{
         setEvents([...events, {title, id:clicked}]);
-        setEvents1([...events1, {title, id:clicked}]);
+        // setEvents1([...events1, {title, id:clicked}]);
         
         setClicked(null);
       }
@@ -232,6 +239,32 @@ export const App = () => {
           onClose={() => setClicked(null)}
           onDelete={() => {
             setEvents(events.filter(e => e.id !== clicked));
+            // setEvents1(events1.filter(e => e.id !== clicked));
+            setClicked(null);
+          }}
+        />
+      }
+       {
+    clicked && !eventForDate1(clicked) &&
+    <NewEventModal 
+    onClose={() => setClicked(null)}
+    onSave={
+      title =>{
+        
+        setEvents1([...events1, {title, id:clicked}]);
+        
+        setClicked(null);
+      }
+    }
+    />
+  }
+  {
+        clicked && eventForDate1(clicked) &&
+        <DeleteEventModal 
+          eventText={eventForDate1(clicked).title}
+          onClose={() => setClicked(null)}
+          onDelete={() => {
+            
             setEvents1(events1.filter(e => e.id !== clicked));
             setClicked(null);
           }}

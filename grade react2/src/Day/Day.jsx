@@ -2,7 +2,7 @@
 import React from 'react';
 
 export const Day = ({ day, onClick }) => {
-  const className = `day ${day.value}`;
+  const className = `day`;
   const id = `div${day.id}`
   return (
         <div onClick={onClick} className={className} id={id}>
