@@ -1,31 +1,4 @@
-// import React,{useState} from "react";
-// export const NewEventModal = (onSave, onClose) =>{
-    
-//     return(
-//         <div id="newEventModal">
-//         <h2>New Event</h2>
-  
-//                 <input className={error ? "error" : ''}
-//                 onChange={ e=> setTitle(e.target.value)} 
-//                 id="eventTitleInput"
-//                  placeholder="Event Title" />
-  
-//         <button onClick={()=>{
-//             if(title){
-//                 setError(false)
-//                 onSave(title)
-//             } else{
-//                 setError(true)
-//             }
-//         }}
-//          id="saveButton">
-//              Save</button>
-//         <button onClick={onClose}
-//         id="cancelButton">
-//             Cancel</button>
-//       </div>
-//     );
-// };
+
 import React, { useState } from 'react';
 
 export const NewEventModal = ({ onSave, onClose }) => {
@@ -35,14 +8,14 @@ export const NewEventModal = ({ onSave, onClose }) => {
   return(
     <>
       <div id="newEventModal">
-        <h2>New Event</h2>
+        <h2>Novo Evento</h2>
 
         <input 
           className={error ? 'error' : ''}
           value={title} 
           onChange={e => setTitle(e.target.value)} 
           id="eventTitleInput" 
-          placeholder="Event Title" 
+          placeholder="Título do Evento" 
         />
 
         <button 
@@ -54,12 +27,12 @@ export const NewEventModal = ({ onSave, onClose }) => {
               setError(true);
             }
           }} 
-          id="saveButton">Save</button>
+          id="saveButton">Salvar</button>
 
 
         <button 
           onClick={onClose}
-          id="cancelButton">Cancel</button>
+          id="cancelButton">Cancelar</button>
       </div>
 
       <div id="modalBackDrop"></div>

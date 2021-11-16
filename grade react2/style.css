@@ -29,31 +29,63 @@ button {
   background-color:#92a1d1;
 }
 #container {
-  width: 770px;
+  width: 1140px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+#box{
+  width: 100%;
+  /* display: inline-block; */
+  display: flex;
+  justify-content: center;
 }
 #weekdays {
   width: 100%;
   display: flex;
   color: #247BA0;
+  justify-content: center;
 }
+
 #weekdays div {
   width: 100px;
   padding: 10px;
-}
-#calendar {
+}.weekdays {
   width: 100%;
-  margin: auto;
+  display: flex;
+  color: #247BA0;
+  justify-content: center;
+}
+
+.weekdays div {
+  width: 200px;
+  padding: 10px;
+}
+
+#calendar {
+  width: 100px;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
 }
-.day {
-  width: 100px;
+
+#calendar1, #calendar2, #calendar3, #calendar4, #calendar5 {
+  width: 200px;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.day, .day1 {
+  width: 100%;
   padding: 10px;
   height: 100px;
   cursor: pointer;
   box-sizing: border-box;
   background-color: white;
-  margin: 5px;
+  margin: 0px;
   box-shadow: 0px 0px 3px #CBD4C2;
   display: flex;
   flex-direction: column;
@@ -122,4 +154,7 @@ button {
   height: 100vh;
   position: absolute;
   background-color: rgba(0,0,0,0.8);
+}
+#div1{
+  /* background-color: red; */
 }
