@@ -37,7 +37,7 @@ export const App = () => {
       
     //  setDateDisplay( `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`);
      const daysArr =[];
-     const days1Arr= [];
+    //  const days1Arr= [];
      for(let i = 1; i<45;i++){
       daysArr.push({
         value: 'div'+i,
@@ -49,10 +49,10 @@ export const App = () => {
      setDays(daysArr)
     },[events]);
 
-    const eventForDate1 = id => events1.find(e => e.id === id)
+    const eventForDate1 = id => events.find(e => e.id === id)
     useEffect(() =>{
-        localStorage.setItem('events1', JSON.stringify(events1));
-    },[events1]);
+        localStorage.setItem('events', JSON.stringify(events));
+    },[events]);
 
     useEffect(() => {
        const days1Arr =[];
@@ -159,14 +159,14 @@ export const App = () => {
             />
         ))}
     </div>
-    <div id="calendar2"> 
-    <div className="weekdays">Terça-Feira</div>    
+    <div id="calendar2">   
+    <div className="weekdays">Quarta-Feira</div>      
         {days.map((d, index) =>(
             <Day
             key = {index}
             day = {d}
             onClick={() =>{                
-              setClicked(d);
+              setClicked(d.id);
                 
             }
             }
@@ -224,7 +224,7 @@ export const App = () => {
     onSave={
       title =>{
         setEvents([...events, {title, id:clicked}]);
-        // setEvents1([...events1, {title, id:clicked}]);
+        setEvents1([...events1, {title, id:clicked}]);
         
         setClicked(null);
       }
@@ -239,12 +239,12 @@ export const App = () => {
           onClose={() => setClicked(null)}
           onDelete={() => {
             setEvents(events.filter(e => e.id !== clicked));
-            // setEvents1(events1.filter(e => e.id !== clicked));
+            setEvents1(events1.filter(e => e.id !== clicked));
             setClicked(null);
           }}
         />
       }
-       {
+       {/* {
     clicked && !eventForDate1(clicked) &&
     <NewEventModal 
     onClose={() => setClicked(null)}
@@ -269,7 +269,7 @@ export const App = () => {
             setClicked(null);
           }}
         />
-      }
+      } */}
   </>
   );
 };
