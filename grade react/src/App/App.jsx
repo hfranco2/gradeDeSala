@@ -8,7 +8,7 @@ export const App = () => {
     
     
     const[days, setDays] = useState([]);
-    const[dateDisplay, setDateDisplay] = useState('');
+    // const[dateDisplay, setDateDisplay] = useState('');
     const [clicked, setClicked] = useState();
 
     const [events,setEvents] = useState(
@@ -22,10 +22,7 @@ export const App = () => {
     },[events]);
 
     useEffect(() => {
-      const dt = new Date();
-      const year = dt.getFullYear();
-      
-     setDateDisplay( `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`);
+    
      const daysArr =[];
      for(let i = 1; i<=390;i++){
       daysArr.push({
@@ -42,16 +39,39 @@ export const App = () => {
     return(
       <>
     <div id="container">
-    
+      <div id="cabecalho">
+      <div id="logo"></div>
+      <div id="titulo">
       <h1>Grade de Salas</h1>
+      </div>
+      <div id="lista">
+      <ul>
+        <li>Anotações em vermelho indicam a ausência do profissional</li>
+        <li>Anotações em azul indicam a reposição de horas do profissional </li>
+        <li>Anotações em verde indicam a atendimento em salas alternadas</li>
+        <li>Anotações em laranja indicam férias do profissional</li>
+      </ul>
+      </div>
+      </div>
     <div id="weekdays">
     
-      <div><img src="grade react\src\App\2.png" alt="logo ame"/></div>
-      <div>Segunda</div>
-      <div>Terça</div>
-      <div>Quarta</div>
-      <div>Quinta</div>
-      <div>Sexta</div>
+      {/* <h1 id="blank"></h1> */}
+      <div id="weekdays2">
+        
+      <div className="nome">Segunda</div>
+      <div className="nome">Terça</div>
+      <div className="nome">Quarta</div>
+      <div className="nome">Quinta</div>
+      <div className="nome">Sexta</div>
+      </div>
+      <div id="periodo">
+      <div id="blank">    </div>
+        <div className="pp">Manhã</div><div className="pp">Tarde</div>
+        <div className="pp">Manhã</div><div className="pp">Tarde</div>
+        <div className="pp">Manhã</div><div className="pp">Tarde</div>
+        <div className="pp">Manhã</div><div className="pp">Tarde</div>
+        <div className="pp">Manhã</div><div className="pp">Tarde</div>
+      </div> 
       
     </div>
     <div id="localizacao">
