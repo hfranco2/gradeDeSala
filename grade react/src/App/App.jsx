@@ -21,10 +21,10 @@ export const App = () => {
         localStorage.getItem('events') ?
          JSON.parse(localStorage.getItem('events')) : []
     );
-    const [events1,setEvents1] = useState(
-      localStorage.getItem('events1') ?
-       JSON.parse(localStorage.getItem('events1')) : []
-  );
+  //   const [events1,setEvents1] = useState(
+  //     localStorage.getItem('events1') ?
+  //      JSON.parse(localStorage.getItem('events1')) : []
+  // );
     const eventForDate = id => events.find(e => e.id === id)
     useEffect(() =>{
         localStorage.setItem('events', JSON.stringify(events));
@@ -37,8 +37,8 @@ export const App = () => {
       
     //  setDateDisplay( `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`);
      const daysArr =[];
-     const days1Arr= [];
-     for(let i = 1; i<45;i++){
+     
+     for(let i = 1; i<225;i++){
       daysArr.push({
         value: 'div'+i,
         event: eventForDate(i),
@@ -49,23 +49,23 @@ export const App = () => {
      setDays(daysArr)
     },[events]);
 
-    const eventForDate1 = id => events1.find(e => e.id === id)
-    useEffect(() =>{
-        localStorage.setItem('events1', JSON.stringify(events1));
-    },[events1]);
+    // const eventForDate1 = id => events1.find(e => e.id === id)
+    // useEffect(() =>{
+    //     localStorage.setItem('events1', JSON.stringify(events1));
+    // },[events1]);
 
-    useEffect(() => {
-       const days1Arr =[];
-       for(let i = 1; i<45;i++){
-        days1Arr.push({
-          value: 'div'+i,
-          event: eventForDate1(i),
-          id: i,
+    // useEffect(() => {
+    //    const days1Arr =[];
+    //    for(let i = 1; i<=225;i++){
+    //     days1Arr.push({
+    //       value: 'div'+i,
+    //       event: eventForDate1(i),
+    //       id: i,
           
-        });
-       }
-       setDays1(days1Arr)
-      },[events1]);
+    //     });
+    //    }
+    //    setDays1(days1Arr)
+    //   },[events1]);
     //   useEffect(() => {
     //     const daysArr2 =[];
     //     for(let i = 1; i<45;i++){
@@ -134,18 +134,20 @@ export const App = () => {
     <div id="calendar">
       <div className="weekdays">Salas</div>
         {days.map((d, index) =>(
+          
             <Day
             key = {index}
+            
             day = {d}
             onClick={() =>{                
               setClicked(d.id);
-                
+              // console.log(d);
             }
             }
             />
         ))}
     </div>
-    <div id="calendar1">  
+    {/* <div id="calendar1">  
     <div className="weekdays">Segunda-Feira</div>    
         {days1.map((d, index) =>(
             <Day1
@@ -153,13 +155,14 @@ export const App = () => {
             day = {d}
             onClick={() =>{                
               setClicked(d.id);
+              
                 
             }
             }
             />
         ))}
-    </div>
-    <div id="calendar2"> 
+    </div> */}
+    {/* <div id="calendar2"> 
     <div className="weekdays">Terça-Feira</div>    
         {days.map((d, index) =>(
             <Day
@@ -214,7 +217,7 @@ export const App = () => {
             }
             />
         ))}
-    </div>
+    </div> */}
     </div>
   </div>
   {
@@ -244,7 +247,7 @@ export const App = () => {
           }}
         />
       }
-       {
+       {/* {
     clicked && !eventForDate1(clicked) &&
     <NewEventModal 
     onClose={() => setClicked(null)}
@@ -269,7 +272,7 @@ export const App = () => {
             setClicked(null);
           }}
         />
-      }
+      } */}
   </>
   );
 };
