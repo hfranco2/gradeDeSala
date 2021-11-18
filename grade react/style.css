@@ -29,7 +29,7 @@ button {
   background-color:#92a1d1;
 }
 #container {
-  width: 1140px;
+  width: 1100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -45,9 +45,12 @@ button {
 }
 #weekdays {
   width: 100%;
-  display: flex;
+  display: grid;
   color: #247BA0;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr ;
   justify-content: center;
+  align-items: center;
 }
 
 #weekdays div {
@@ -58,28 +61,53 @@ button {
   display: flex;
   color: #247BA0;
   justify-content: center;
-}
-
-.weekdays div {
   width: 200px;
   padding: 10px;
 }
 
+
+
 #calendar {
-  width: 100px;
+  width: 1000px;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
 }
 
-#calendar1, #calendar2, #calendar3, #calendar4, #calendar5 {
+/* #calendar1, #calendar2, #calendar3, #calendar4, #calendar5 {
   width: 200px;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
+} */
+/* #localizacao{
+ 
+} */
+#localizacao{
+  display: flex;
+  flex-direction: column;
+}
+.salas{
+  width: 100px;
+  padding: 10px;
+  height: 100px;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: white;
+  margin: 0px;
+  box-shadow: 0px 0px 3px #CBD4C2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.salas div{
+  color: red;
+  text-align: center;
 }
 .day, .day1 {
-  width: 100%;
+  width: 100px;
   padding: 10px;
   height: 100px;
   cursor: pointer;
@@ -98,7 +126,7 @@ button {
 .day + .currentDay ,.day1 + .currentDay {
   background-color:#e8f4fa;
 }
-.event, .event1 {
+.event {
   font-size: 15px;
   padding: 3px;
   background-color: #58bae4;
