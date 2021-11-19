@@ -5,6 +5,7 @@ export const NewEventModal = ({ onSave, onClose }) => {
   const [title, setTitle] = useState('');
   const [spe, setSpe] = useState('');
   const [time, setTime] = useState('');
+  const [status, setStatus] = useState('');
   const [error, setError] = useState(false);
 
   return(
@@ -33,7 +34,12 @@ export const NewEventModal = ({ onSave, onClose }) => {
           id="eventTitleInput2" 
           placeholder="Horario" 
         />
-        <select name="status" >
+        <select name="status"
+        className={error ? 'error' : ''}
+          value={status} 
+          onChange={e => setStatus(e.target.value)} 
+          id="eventTitleInput2" 
+          placeholder="Horario" >
           <option value="1">Normal</option>
           <option value="2">Ausênsia</option>
           <option value="3">Reposição</option>
@@ -42,12 +48,13 @@ export const NewEventModal = ({ onSave, onClose }) => {
           </select>
         <button 
           onClick={() => {
-            if (title) {
-              setError(false);
-              onSave(title,spe,time);
-            } else {
-              setError(true);
-            }
+           
+              onSave(title);              
+              // onSave(spe);
+              // onSave(time);
+              // onSave(status);
+
+            
           }} 
           id="saveButton">Salvar</button>
 

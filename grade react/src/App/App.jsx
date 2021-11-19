@@ -36,7 +36,7 @@ const [status,setStatus] = useState(
         localStorage.setItem('spe', JSON.stringify(spe));
         localStorage.setItem('time', JSON.stringify(time));
         localStorage.setItem('status', JSON.stringify(status));
-    },[events]);
+    },[events],[spe],[time],[status]);
     // const eventForDate1 = id => spe.find(e => e.id === id)
     // useEffect(() =>{
     //     localStorage.setItem('spe', JSON.stringify(spe));
@@ -59,13 +59,13 @@ const [status,setStatus] = useState(
         value: 'div'+i,
         event: eventForDate(i),                
         id: i,
-        // spe:eventForDate1(i),
-        // time:eventForDate2(i),
-        // status:eventForDate3(i),            
+        spe:eventForDate(i),
+        time:eventForDate(i),
+        status:eventForDate(i),            
         });
      }
      setDays(daysArr)
-    },[events]);
+    },[events],[spe],[time],[status]);
 
 
     return(
@@ -170,7 +170,10 @@ const [status,setStatus] = useState(
     onClose={() => setClicked(null)}
     onSave={
       title=>{
-        setEvents([...events, {title, id:clicked}]);              
+        setEvents([...events, {title, id:clicked}]);      
+        // setSpe([...spe, {}]);    
+        // setTime([...time, {title}]); 
+        // setStatus([...status, {title}]);   
       }
       // spe =>{
       //   setSpe([...spe, {spe}]);
@@ -183,6 +186,7 @@ const [status,setStatus] = useState(
       //   setClicked(null);
       // }
       
+      
     }
     />
   }
@@ -194,6 +198,9 @@ const [status,setStatus] = useState(
           onClose={() => setClicked(null)}
           onDelete={() => {
             setEvents(events.filter(e => e.id !== clicked));
+            // setSpe(spe.filter(e => e.id !== clicked));
+            // setTime(time.filter(e => e.id !== clicked));
+            // setStatus(status.filter(e => e.id !== clicked));
             setClicked(null);
           }}
         />
