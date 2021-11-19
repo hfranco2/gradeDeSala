@@ -11,15 +11,42 @@ export const App = () => {
     
     const [clicked, setClicked] = useState();
 
+    // const [status, setStatus] = useState();
+    
+
     const [events,setEvents] = useState(
-        localStorage.getItem('events') ?
+        localStorage.getItem('events',) ?
          JSON.parse(localStorage.getItem('events')) : []
     );
-
+//     const [spe,setSpe] = useState(
+//       localStorage.getItem('spe',) ?
+//        JSON.parse(localStorage.getItem('spe')) : []
+//   );
+//   const [time,setTime] = useState(
+//     localStorage.getItem('time',) ?
+//      JSON.parse(localStorage.getItem('time')) : []
+// );
+// const [status,setStatus] = useState(
+//   localStorage.getItem('status',) ?
+//    JSON.parse(localStorage.getItem('status')) : []
+// );
     const eventForDate = id => events.find(e => e.id === id)
     useEffect(() =>{
         localStorage.setItem('events', JSON.stringify(events));
     },[events]);
+    // const eventForDate1 = id => spe.find(e => e.id === id)
+    // useEffect(() =>{
+    //     localStorage.setItem('spe', JSON.stringify(spe));
+    // },[spe]);
+    // const eventForDate2 = id => time.find(e => e.id === id)
+    // useEffect(() =>{
+    //     localStorage.setItem('spe', JSON.stringify(time));
+    // },[time]);
+    // const eventForDate3 = id => spe.find(e => e.id === id)
+    // useEffect(() =>{
+    //     localStorage.setItem('spe', JSON.stringify(status));
+    // },[status]);
+    
 
     useEffect(() => {
     
@@ -27,8 +54,11 @@ export const App = () => {
      for(let i = 1; i<=390;i++){
       daysArr.push({
         value: 'div'+i,
-        event: eventForDate(i),
-        id: i,              
+        event: eventForDate(i),                
+        id: i,
+        // spe:eventForDate1(i),
+        // time:eventForDate2(i),
+        // status:eventForDate3(i),            
         });
      }
      setDays(daysArr)
@@ -118,13 +148,13 @@ export const App = () => {
       </div>
 
     <div id="calendar">
-        {days.map((d, index) =>(
+        {days.map((d, index,status) =>(
             <Day
             key = {index}
-            day = {d}
-            onClick={() =>{                
+            day = {d}            
+            onClick={() =>{                              
               setClicked(d.id);
-                
+                console.log(d)
             }
             }
             />
@@ -136,11 +166,20 @@ export const App = () => {
     <NewEventModal 
     onClose={() => setClicked(null)}
     onSave={
-      title =>{
-        setEvents([...events, {title, id:clicked}]);
-        
-        setClicked(null);
+      title=>{
+        setEvents([...events, {title, id:clicked}]);              
       }
+      // spe =>{
+      //   setEvents([...events, {spe}]);
+        
+        
+      // },
+      // time =>{
+      //   setEvents([...events, {time}]);
+        
+      //   setClicked(null);
+      // }
+      
     }
     />
   }
@@ -148,7 +187,7 @@ export const App = () => {
 {
         clicked && eventForDate(clicked) &&
         <DeleteEventModal 
-          eventText={eventForDate(clicked).title}
+          eventText={eventForDate(clicked).title +days.status}
           onClose={() => setClicked(null)}
           onDelete={() => {
             setEvents(events.filter(e => e.id !== clicked));
