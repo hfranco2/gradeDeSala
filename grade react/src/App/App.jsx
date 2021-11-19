@@ -18,21 +18,24 @@ export const App = () => {
         localStorage.getItem('events',) ?
          JSON.parse(localStorage.getItem('events')) : []
     );
-//     const [spe,setSpe] = useState(
-//       localStorage.getItem('spe',) ?
-//        JSON.parse(localStorage.getItem('spe')) : []
-//   );
-//   const [time,setTime] = useState(
-//     localStorage.getItem('time',) ?
-//      JSON.parse(localStorage.getItem('time')) : []
-// );
-// const [status,setStatus] = useState(
-//   localStorage.getItem('status',) ?
-//    JSON.parse(localStorage.getItem('status')) : []
-// );
+    const [spe,setSpe] = useState(
+      localStorage.getItem('spe',) ?
+       JSON.parse(localStorage.getItem('spe')) : []
+  );
+  const [time,setTime] = useState(
+    localStorage.getItem('time',) ?
+     JSON.parse(localStorage.getItem('time')) : []
+);
+const [status,setStatus] = useState(
+  localStorage.getItem('status',) ?
+   JSON.parse(localStorage.getItem('status')) : []
+);
     const eventForDate = id => events.find(e => e.id === id)
     useEffect(() =>{
         localStorage.setItem('events', JSON.stringify(events));
+        localStorage.setItem('spe', JSON.stringify(spe));
+        localStorage.setItem('time', JSON.stringify(time));
+        localStorage.setItem('status', JSON.stringify(status));
     },[events]);
     // const eventForDate1 = id => spe.find(e => e.id === id)
     // useEffect(() =>{
@@ -170,12 +173,12 @@ export const App = () => {
         setEvents([...events, {title, id:clicked}]);              
       }
       // spe =>{
-      //   setEvents([...events, {spe}]);
+      //   setSpe([...spe, {spe}]);
         
         
       // },
       // time =>{
-      //   setEvents([...events, {time}]);
+      //   setTime([...time, {time}]);
         
       //   setClicked(null);
       // }
