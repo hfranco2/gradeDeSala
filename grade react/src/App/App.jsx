@@ -8,7 +8,7 @@ export const App = () => {
     
     
     const[days, setDays] = useState([]);
-    // const[dateDisplay, setDateDisplay] = useState('');
+    
     const [clicked, setClicked] = useState();
 
     const [events,setEvents] = useState(
@@ -28,9 +28,8 @@ export const App = () => {
       daysArr.push({
         value: 'div'+i,
         event: eventForDate(i),
-        id: i,
-        
-      });
+        id: i,              
+        });
      }
      setDays(daysArr)
     },[events]);

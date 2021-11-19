@@ -1,6 +1,5 @@
 body {
-  display: flex;
-  /* margin-top: 50px; */
+  display: flex; 
   justify-content: center;
   background-color: rgb(247, 247, 247);
 }
@@ -13,34 +12,18 @@ button {
   border: none;
   outline: none;
   padding: 5px;
-  border-radius: 5px;
-  /* color: white; */
+  border-radius: 5px;  
 }
-
-/* #header {
-  padding: 10px;
-  color: #d36c6c;
-  font-size: 26px;
-  font-family: sans-serif;
-  display: flex;
-  justify-content: space-between;
-}
-#header button {
-  background-color:#92a1d1;
-} */
 #container {
   width: 1100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  /* background-color: aliceblue; */
+  
 }
 #box{
   width: 100%;
-  /* display: inline-block; */
+  
   display: flex;
   justify-content: center;
 }
@@ -49,36 +32,26 @@ button {
   height: 100px;
   margin: 0;
   padding: 0;
-  display: grid;
-  /* flex-wrap: wrap; */
+  display: grid; 
   grid-template-rows: 1fr;
-  grid-template-columns: 20% 40% 40%;
-  /* place-items: center ; */
+  grid-template-columns: 20% 40% 40%; 
   justify-content: space-evenly;
-  align-items: center;
-  /* background-color: white; */
-  
+  align-items: center;   
 }
 #titulo{
   display: flex;
-  justify-content: flex-end;
-  
+  justify-content: flex-end;  
 }
 #lista{
   margin-left: 200px;
   font-size: 14px;
 }
-
-
 #weekdays {
   width: 100%;
-  height: 130px;
-  /* height:50px; */
+  height: 130px;  
   display: flex;
   flex-direction: column;
-  color: #247BA0;
-  /* grid-template-columns:  10% 90%; */
-  
+  color: #247BA0; 
   justify-content: space-between;
   align-items: center; 
   flex-wrap: wrap;
@@ -92,35 +65,21 @@ button {
   grid-template-rows: 1fr ;
   justify-content: space-evenly;
   align-items: center;
-  padding-bottom: 10px;
-  
+  padding-bottom: 10px;  
 }
 
 #weekdays2 div {
   width: 200px;
   height: 50px;
-  padding:50px;
-  /* background-color: aliceblue; */
+  padding:50px; 
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  
-
+  align-items: flex-end; 
 }
-/* .nome{
-  background-color: red;
-} */
+
 #periodo{
   display: flex;
-  width: 1000px;
-  
-
-  
-  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-grid-template-rows: 1fr; */
-/* background-color: red ; */
-/* justify-content: space-evenly;  */
-
+  width: 1000px;  
 position: left;
 font-size: 13px;
   
@@ -140,20 +99,13 @@ font-size: 13px;
   background-repeat: no-repeat;
   width: 200px;
   height: 100px;
-  overflow: hidden;
-  
-  
-}
+  overflow: hidden; 
+  }
 #blank{
   width:40px;
   height: -50px;
-  background-color: white;
-  /* background-color: #247BA0; */
-  /* padding: 0;
-  margin: 0; */
-  /* padding-bottom: 0; */
-  
-}
+  background-color: white;  
+  }
 
 #calendar {
   width: 1000px;
@@ -161,16 +113,6 @@ font-size: 13px;
   display: flex;
   flex-wrap: wrap;
 }
-
-/* #calendar1, #calendar2, #calendar3, #calendar4, #calendar5 {
-  width: 200px;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-} */
-/* #localizacao{
- 
-} */
 #localizacao{
   display: flex;
   flex-direction: column;
@@ -187,8 +129,7 @@ font-size: 13px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  
+  align-items: center;  
 }
 .salas div{
   color: red;
@@ -206,9 +147,7 @@ font-size: 13px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* border-radius: 15px;
-  border: solid 1px; */
-}
+  }
 .day:hover,.day1:hover {
   background-color: #e8faed;
 }
@@ -273,6 +212,3 @@ font-size: 13px;
   position: fixed;
   background-color: rgba(0,0,0,0.8);
 }
-/* #div1{
-  background-color: red;
-} */
