@@ -49,7 +49,7 @@ export const NewEventModal = ({ onSave, onClose }) => {
         <button 
           onClick={() => {
            
-              onSave(title);              
+              onSave(title, spe, time, status);              
               // onSave(spe);
               // onSave(time);
               // onSave(status);

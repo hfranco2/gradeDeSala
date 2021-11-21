@@ -33,22 +33,22 @@ const [status,setStatus] = useState(
     const eventForDate = id => events.find(e => e.id === id)
     useEffect(() =>{
         localStorage.setItem('events', JSON.stringify(events));
+        // localStorage.setItem('spe', JSON.stringify(spe));
+        // localStorage.setItem('time', JSON.stringify(time));
+        // localStorage.setItem('status', JSON.stringify(status));
+    },[events]);
+    const eventForDate1 = id => spe.find(s => s.id === id)
+    useEffect(() =>{
         localStorage.setItem('spe', JSON.stringify(spe));
+    },[spe]);
+    const eventForDate2 = id => time.find(t => t.id === id)
+    useEffect(() =>{
         localStorage.setItem('time', JSON.stringify(time));
+    },[time]);
+    const eventForDate3 = id => status.find(a => a.id === id)
+    useEffect(() =>{
         localStorage.setItem('status', JSON.stringify(status));
-    },[events],[spe],[time],[status]);
-    // const eventForDate1 = id => spe.find(e => e.id === id)
-    // useEffect(() =>{
-    //     localStorage.setItem('spe', JSON.stringify(spe));
-    // },[spe]);
-    // const eventForDate2 = id => time.find(e => e.id === id)
-    // useEffect(() =>{
-    //     localStorage.setItem('spe', JSON.stringify(time));
-    // },[time]);
-    // const eventForDate3 = id => spe.find(e => e.id === id)
-    // useEffect(() =>{
-    //     localStorage.setItem('spe', JSON.stringify(status));
-    // },[status]);
+    },[status]);
     
 
     useEffect(() => {
@@ -59,12 +59,14 @@ const [status,setStatus] = useState(
         value: 'div'+i,
         event: eventForDate(i),                
         id: i,
-        spe:eventForDate(i),
-        time:eventForDate(i),
-        status:eventForDate(i),            
+        spe:eventForDate1(i),
+        time:eventForDate2(i),
+        status:eventForDate3(i),            
         });
      }
-     setDays(daysArr)
+     setDays(daysArr);
+     
+
     },[events],[spe],[time],[status]);
 
 
@@ -151,13 +153,15 @@ const [status,setStatus] = useState(
       </div>
 
     <div id="calendar">
-        {days.map((d, index,status) =>(
+        {days.map((d, index) =>(
             <Day
-            key = {index}
-            day = {d}            
+            key = {index}            
+            day = {d}   
             onClick={() =>{                              
               setClicked(d.id);
                 console.log(d)
+                console.log(index)
+                
             }
             }
             />
@@ -171,26 +175,27 @@ const [status,setStatus] = useState(
     onSave={
       title=>{
         setEvents([...events, {title, id:clicked}]);      
-        // setSpe([...spe, {}]);    
-        // setTime([...time, {title}]); 
+        // setSpe([...spe, {spe}]);    
+        // setTime([...time, {time}]); 
         // setStatus([...status, {title}]);   
       }
-      // spe =>{
-      //   setSpe([...spe, {spe}]);
-        
-        
-      // },
-      // time =>{
-      //   setTime([...time, {time}]);
-        
-      //   setClicked(null);
-      // }
       
+      // spe=>{
+      //   setSpe([...spe, {spe, id:clicked}]);  
+      // },
+    
+      // time=>{
+      //   setTime([...time, {time, id:clicked}]);  
+      // },
+      
+      // status=>{
+      //   setStatus([...status, {status, id:clicked}]);  
+      // }
       
     }
     />
+  
   }
-
 {
         clicked && eventForDate(clicked) &&
         <DeleteEventModal 
