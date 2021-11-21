@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { CalendarHeader } from '../CalendarHeader/CalendarHeader';
+// import { CalendarHeader } from '../CalendarHeader/CalendarHeader';
 import { Day } from '../Day/Day';
 import { NewEventModal } from '../NewEventModal';
 import { DeleteEventModal } from '../DeleteEventModal';
@@ -28,7 +28,8 @@ export const App = () => {
       daysArr.push({
         value: 'div'+i,
         event: eventForDate(i),
-        id: i,              
+        id: i,  
+                   
         });
      }
      setDays(daysArr)
@@ -112,9 +113,7 @@ export const App = () => {
       <div className="salas">35<div className="nome">Otorrino</div></div>
       <div className="salas">36(a)<div className="nome">Bronco / Naso / Endoscopia</div></div>
       <div className="salas">36(c)<div className="nome">Colono / Endoscopia</div></div>
-      <div className="salas">36(e)<div className="nome">Procedimentos</div></div> 
-      
-      
+      <div className="salas">36(e)<div className="nome">Procedimentos</div></div>      
       </div>
 
     <div id="calendar">
@@ -123,8 +122,7 @@ export const App = () => {
             key = {index}
             day = {d}
             onClick={() =>{                
-              setClicked(d.id);
-                
+              setClicked(d.id);                
             }
             }
             />
@@ -137,8 +135,7 @@ export const App = () => {
     onClose={() => setClicked(null)}
     onSave={
       title =>{
-        setEvents([...events, {title, id:clicked}]);
-        
+        setEvents([...events, {title, id:clicked}]);        
         setClicked(null);
       }
     }
