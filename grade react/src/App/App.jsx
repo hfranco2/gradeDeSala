@@ -14,38 +14,38 @@ export const App = () => {
     // const [status, setStatus] = useState();
     
 
-    const [events,setEvents] = useState(
+    let [events,setEvents] = useState(
         localStorage.getItem('events',) ?
          JSON.parse(localStorage.getItem('events')) : []
     );
-    const [spe,setSpe] = useState(
+    let [spe,setSpe] = useState(
       localStorage.getItem('spe',) ?
        JSON.parse(localStorage.getItem('spe')) : []
   );
-  const [time,setTime] = useState(
+  let [time,setTime] = useState(
     localStorage.getItem('time',) ?
      JSON.parse(localStorage.getItem('time')) : []
 );
-const [status,setStatus] = useState(
+let [status,setStatus] = useState(
   localStorage.getItem('status',) ?
    JSON.parse(localStorage.getItem('status')) : []
 );
-    const eventForDate = id => events.find(e => e.id === id)
+    let eventForDate = id => events.find(e => e.id === id)
     useEffect(() =>{
         localStorage.setItem('events', JSON.stringify(events));
         // localStorage.setItem('spe', JSON.stringify(spe));
         // localStorage.setItem('time', JSON.stringify(time));
         // localStorage.setItem('status', JSON.stringify(status));
     },[events]);
-    const eventForDate1 = id => spe.find(s => s.id === id)
+    let eventForDate1 = id => spe.find(s => s.id === id)
     useEffect(() =>{
         localStorage.setItem('spe', JSON.stringify(spe));
     },[spe]);
-    const eventForDate2 = id => time.find(t => t.id === id)
+    let eventForDate2 = id => time.find(t => t.id === id)
     useEffect(() =>{
         localStorage.setItem('time', JSON.stringify(time));
     },[time]);
-    const eventForDate3 = id => status.find(a => a.id === id)
+    let eventForDate3 = id => status.find(a => a.id === id)
     useEffect(() =>{
         localStorage.setItem('status', JSON.stringify(status));
     },[status]);
@@ -178,21 +178,20 @@ const [status,setStatus] = useState(
         // setSpe([...spe, {spe}]);    
         // setTime([...time, {time}]); 
         // setStatus([...status, {title}]);   
-      }
-      
-      // spe=>{
-      //   setSpe([...spe, {spe, id:clicked}]);  
-      // },
+      }}   
+      onSave1={
+      vspe=>{
+        setSpe([...spe, {vspe, id:clicked}]);  
+      }}
+      onSave2={
+      vtime=>{
+        setTime([...time, {vtime, id:clicked}]);  
+      }}
+    onSave3={
+      vstatus=>{
+        setStatus([...status, {vstatus, id:clicked}]);  
+      }}
     
-      // time=>{
-      //   setTime([...time, {time, id:clicked}]);  
-      // },
-      
-      // status=>{
-      //   setStatus([...status, {status, id:clicked}]);  
-      // }
-      
-    }
     />
   
   }

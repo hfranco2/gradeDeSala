@@ -1,14 +1,16 @@
 
 import React, { useState } from 'react';
 
-export const NewEventModal = ({ onSave, onClose }) => {
+export const NewEventModal = ({ onSave, onClose, onSave1, onSave2, onSave3  }) => {
   const [title, setTitle] = useState('');
-  const [spe, setSpe] = useState('');
-  const [time, setTime] = useState('');
-  const [status, setStatus] = useState('');
+  const [vspe, setSpe] = useState('');
+  const [vtime, setTime] = useState('');
+  const [vstatus, setStatus] = useState('1');
   const [error, setError] = useState(false);
 
   return(
+
+    
     <>
       <div id="newEventModal">
         <h2>Novo Evento</h2>
@@ -22,21 +24,21 @@ export const NewEventModal = ({ onSave, onClose }) => {
         />
          <input 
           className={error ? 'error' : ''}
-          value={spe} 
+          value={vspe} 
           onChange={e => setSpe(e.target.value)} 
           id="eventTitleInput1" 
           placeholder="Especialidade" 
         />
          <input 
           className={error ? 'error' : ''}
-          value={time} 
+          value={vtime} 
           onChange={e => setTime(e.target.value)} 
           id="eventTitleInput2" 
           placeholder="Horario" 
         />
         <select name="status"
         className={error ? 'error' : ''}
-          value={status} 
+          value={vstatus} 
           onChange={e => setStatus(e.target.value)} 
           id="eventTitleInput2" 
           placeholder="Horario" >
@@ -49,7 +51,10 @@ export const NewEventModal = ({ onSave, onClose }) => {
         <button 
           onClick={() => {
            
-              onSave(title, spe, time, status);              
+              onSave(title);        
+              onSave1(vspe);
+              onSave2(vtime);
+              onSave3(vstatus);      
               // onSave(spe);
               // onSave(time);
               // onSave(status);
