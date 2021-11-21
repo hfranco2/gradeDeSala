@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-// import { CalendarHeader } from '../CalendarHeader/CalendarHeader';
+import { CalendarHeader } from '../CalendarHeader/CalendarHeader';
 import { Day } from '../Day/Day';
 import { NewEventModal } from '../NewEventModal';
 import { DeleteEventModal } from '../DeleteEventModal';
@@ -11,15 +11,45 @@ export const App = () => {
     
     const [clicked, setClicked] = useState();
 
+    // const [status, setStatus] = useState();
+    
+
     const [events,setEvents] = useState(
-        localStorage.getItem('events') ?
+        localStorage.getItem('events',) ?
          JSON.parse(localStorage.getItem('events')) : []
     );
-
+    const [spe,setSpe] = useState(
+      localStorage.getItem('spe',) ?
+       JSON.parse(localStorage.getItem('spe')) : []
+  );
+  const [time,setTime] = useState(
+    localStorage.getItem('time',) ?
+     JSON.parse(localStorage.getItem('time')) : []
+);
+const [status,setStatus] = useState(
+  localStorage.getItem('status',) ?
+   JSON.parse(localStorage.getItem('status')) : []
+);
     const eventForDate = id => events.find(e => e.id === id)
     useEffect(() =>{
         localStorage.setItem('events', JSON.stringify(events));
-    },[events]);
+        localStorage.setItem('spe', JSON.stringify(spe));
+        localStorage.setItem('time', JSON.stringify(time));
+        localStorage.setItem('status', JSON.stringify(status));
+    },[events],[spe],[time],[status]);
+    // const eventForDate1 = id => spe.find(e => e.id === id)
+    // useEffect(() =>{
+    //     localStorage.setItem('spe', JSON.stringify(spe));
+    // },[spe]);
+    // const eventForDate2 = id => time.find(e => e.id === id)
+    // useEffect(() =>{
+    //     localStorage.setItem('spe', JSON.stringify(time));
+    // },[time]);
+    // const eventForDate3 = id => spe.find(e => e.id === id)
+    // useEffect(() =>{
+    //     localStorage.setItem('spe', JSON.stringify(status));
+    // },[status]);
+    
 
     useEffect(() => {
     
@@ -27,13 +57,15 @@ export const App = () => {
      for(let i = 1; i<=390;i++){
       daysArr.push({
         value: 'div'+i,
-        event: eventForDate(i),
-        id: i,  
-                   
+        event: eventForDate(i),                
+        id: i,
+        spe:eventForDate(i),
+        time:eventForDate(i),
+        status:eventForDate(i),            
         });
      }
      setDays(daysArr)
-    },[events]);
+    },[events],[spe],[time],[status]);
 
 
     return(
@@ -113,16 +145,19 @@ export const App = () => {
       <div className="salas">35<div className="nome">Otorrino</div></div>
       <div className="salas">36(a)<div className="nome">Bronco / Naso / Endoscopia</div></div>
       <div className="salas">36(c)<div className="nome">Colono / Endoscopia</div></div>
-      <div className="salas">36(e)<div className="nome">Procedimentos</div></div>      
+      <div className="salas">36(e)<div className="nome">Procedimentos</div></div> 
+      
+      
       </div>
 
     <div id="calendar">
-        {days.map((d, index) =>(
+        {days.map((d, index,status) =>(
             <Day
             key = {index}
-            day = {d}
-            onClick={() =>{                
-              setClicked(d.id);                
+            day = {d}            
+            onClick={() =>{                              
+              setClicked(d.id);
+                console.log(d)
             }
             }
             />
@@ -134,10 +169,24 @@ export const App = () => {
     <NewEventModal 
     onClose={() => setClicked(null)}
     onSave={
-      title =>{
-        setEvents([...events, {title, id:clicked}]);        
-        setClicked(null);
+      title=>{
+        setEvents([...events, {title, id:clicked}]);      
+        // setSpe([...spe, {}]);    
+        // setTime([...time, {title}]); 
+        // setStatus([...status, {title}]);   
       }
+      // spe =>{
+      //   setSpe([...spe, {spe}]);
+        
+        
+      // },
+      // time =>{
+      //   setTime([...time, {time}]);
+        
+      //   setClicked(null);
+      // }
+      
+      
     }
     />
   }
@@ -145,10 +194,13 @@ export const App = () => {
 {
         clicked && eventForDate(clicked) &&
         <DeleteEventModal 
-          eventText={eventForDate(clicked).title}
+          eventText={eventForDate(clicked).title +days.status}
           onClose={() => setClicked(null)}
           onDelete={() => {
             setEvents(events.filter(e => e.id !== clicked));
+            // setSpe(spe.filter(e => e.id !== clicked));
+            // setTime(time.filter(e => e.id !== clicked));
+            // setStatus(status.filter(e => e.id !== clicked));
             setClicked(null);
           }}
         />

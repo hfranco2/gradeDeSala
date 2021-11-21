@@ -10,6 +10,7 @@ export const DeleteEventModal = ({ onDelete, eventText, onClose }) => {
 
         <button onClick={onDelete} id="deleteButton">Excluir</button>
         <button onClick={onClose} id="closeButton">Fechar</button>
+        <button onClick={onClose} id="closeButton">Alterar Status</button>
       </div>
 
       <div id="modalBackDrop"></div>

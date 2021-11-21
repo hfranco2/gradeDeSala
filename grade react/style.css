@@ -181,7 +181,7 @@ font-size: 13px;
   position: fixed;
   font-family: sans-serif;
 }
-#eventTitleInput {
+#eventTitleInput,#eventTitleInput1, #eventTitleInput2{
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
