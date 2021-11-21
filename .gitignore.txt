@@ -10,9 +10,7 @@ yarn-error.log*
 build/Release
 
 # Dependency directories
-node_modules/
-grade react/node_modules/
-grade react2/node_modules/
+node_modules
 jspm_packages/
 
 # Distribution directories
