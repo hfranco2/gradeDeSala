@@ -6,8 +6,8 @@ import { NewEventModal } from '../NewEventModal';
 import { DeleteEventModal } from '../DeleteEventModal';
 
 export const App = () => {
-    
-    
+
+
     const[days, setDays] = useState([]);
     const[days1, setDays1] = useState([]);
     const[days2, setDays2] = useState([]);
@@ -30,6 +30,8 @@ export const App = () => {
         localStorage.setItem('events', JSON.stringify(events));
     },[events]);
     
+    
+
 
     useEffect(() => {
     //   const dt = new Date();

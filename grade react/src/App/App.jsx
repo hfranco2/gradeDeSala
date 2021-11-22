@@ -4,9 +4,11 @@ import { Day } from '../Day/Day';
 import { NewEventModal } from '../NewEventModal';
 import { DeleteEventModal } from '../DeleteEventModal';
 
+import Knex from "../server/db"
+// import { Knex } from '../server/db';
+// const Knex = require('../server/db');
+
 export const App = () => {
-    
-    
     const[days, setDays] = useState([]);
     
     const [clicked, setClicked] = useState();
@@ -50,6 +52,8 @@ let [status,setStatus] = useState(
         localStorage.setItem('status', JSON.stringify(status));
     },[status]);
     
+
+    console.log(Knex.select('*').from('books'));
 
     useEffect(() => {
     
