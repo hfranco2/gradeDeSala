@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Day } from "../Day/Day";
 import { NewEventModal } from "../NewEventModal";
 import { DeleteEventModal } from "../DeleteEventModal";
-import { PagesRoot } from "../pages/Root";
+import UserLogin from "../components/Login/login";
 
 export const App = () => {
   const [days, setDays] = useState([]);
@@ -71,7 +71,7 @@ export const App = () => {
           <div id="titulo">
             <h1>Grade de Salas</h1>
           </div>
-          <input type="button" onClick={PagesRoot} value="Login" />
+          <input type="button" onClick={UserLogin} value="Login" />
           <div id="lista">
             <ul>
               <li>Anotações em vermelho indicam a ausência do profissional</li>
