@@ -1,13 +1,14 @@
 // Import path module
-import path from 'path'
-import knex from 'knex'
-// const path = require('path')
+// import path from 'path'
+
+// import knex from 'knex'
+const path = require('path')
 
 // Get the location of database.sqlite file
-const dbPath = path.resolve('./database/database.sqlite')
+const dbPath = path.resolve(__dirname, 'database/database.sqlite')
 
 // Create connection to SQLite database
-const Knex = knex({
+const Knex = require('knex')({
   client: 'sqlite3',
   connection: {
     filename: dbPath, 
@@ -58,4 +59,4 @@ Knex.select('*').from('agendamentos')
   .catch(err => console.log(err))
 
 // Export the database
-export default Knex
+module.exports = Knex
