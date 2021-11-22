@@ -1,18 +1,13 @@
-
-import React from 'react';
+import React from "react";
 
 export const Day = ({ day, onClick }) => {
   const className = `day`;
-  const id = `div${day.id}`
+  const id = `div${day.id}`;
   return (
-        <div onClick={onClick} className={className} id={id}>
+    <div onClick={onClick} className={className} id={id}>
       {day.id}
 
-      {day.event && <div className='event'>{day.event.title}
-      </div>}
+      {day.event && <div className="event">{day.event.title}</div>}
     </div>
   );
 };
- 
- 
- 
