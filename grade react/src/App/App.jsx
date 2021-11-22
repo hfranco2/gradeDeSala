@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import { CalendarHeader } from '../CalendarHeader/CalendarHeader';
 import { Day } from '../Day/Day';
 import { NewEventModal } from '../NewEventModal';
 import { DeleteEventModal } from '../DeleteEventModal';
@@ -11,7 +10,7 @@ export const App = () => {
     
     const [clicked, setClicked] = useState();
 
-    // const [status, setStatus] = useState();
+    
     
 
     let [events,setEvents] = useState(
@@ -33,9 +32,7 @@ let [status,setStatus] = useState(
     let eventForDate = id => events.find(e => e.id === id)
     useEffect(() =>{
         localStorage.setItem('events', JSON.stringify(events));
-        // localStorage.setItem('spe', JSON.stringify(spe));
-        // localStorage.setItem('time', JSON.stringify(time));
-        // localStorage.setItem('status', JSON.stringify(status));
+        
     },[events]);
     let eventForDate1 = id => spe.find(s => s.id === id)
     useEffect(() =>{
@@ -54,7 +51,7 @@ let [status,setStatus] = useState(
     useEffect(() => {
     
      const daysArr =[];
-     for(let i = 1; i<=390;i++){
+     for(let i = 1; i<=380;i++){
       daysArr.push({
         value: 'div'+i,
         event: eventForDate(i),                
@@ -90,8 +87,7 @@ let [status,setStatus] = useState(
     <div id="weekdays">
     
       {/* <h1 id="blank"></h1> */}
-      <div id="weekdays2">
-        
+      <div id="weekdays2">        
       <div className="nome">Segunda</div>
       <div className="nome">Terça</div>
       <div className="nome">Quarta</div>
@@ -108,8 +104,7 @@ let [status,setStatus] = useState(
       </div> 
       
     </div>
-    <div id="localizacao">
-      <div className="salas">Salas<div className="nome"></div></div>
+    <div id="localizacao">      
       <div className="salas">01(b)<div className="nome">USG 1</div></div>
       <div className="salas">01(c)<div className="nome">USG 2</div></div>
       <div className="salas">01(f)<div className="nome">USG 3</div></div> 
@@ -159,9 +154,6 @@ let [status,setStatus] = useState(
             day = {d}   
             onClick={() =>{                              
               setClicked(d.id);
-                console.log(d)
-                console.log(index)
-                
             }
             }
             />
@@ -174,37 +166,42 @@ let [status,setStatus] = useState(
     onClose={() => setClicked(null)}
     onSave={
       title=>{
-        setEvents([...events, {title, id:clicked}]);      
-        // setSpe([...spe, {spe}]);    
-        // setTime([...time, {time}]); 
-        // setStatus([...status, {title}]);   
-      }}   
+        setEvents([...events, {title, id:clicked}]);  
+        setClicked(null) 
+      }}  
+
       onSave1={
       vspe=>{
         setSpe([...spe, {vspe, id:clicked}]);  
+        setClicked(null)
       }}
+
       onSave2={
       vtime=>{
         setTime([...time, {vtime, id:clicked}]);  
+        setClicked(null)
       }}
+
     onSave3={
       vstatus=>{
         setStatus([...status, {vstatus, id:clicked}]);  
+        setClicked(null)
       }}
-    
+      
     />
   
   }
 {
         clicked && eventForDate(clicked) &&
         <DeleteEventModal 
-          eventText={eventForDate(clicked).title +days.status}
+          eventText={eventForDate(clicked).title  + eventForDate1(clicked).vspe + eventForDate2(clicked).vtime 
+            +eventForDate3(clicked).vstatus}
           onClose={() => setClicked(null)}
           onDelete={() => {
             setEvents(events.filter(e => e.id !== clicked));
-            // setSpe(spe.filter(e => e.id !== clicked));
-            // setTime(time.filter(e => e.id !== clicked));
-            // setStatus(status.filter(e => e.id !== clicked));
+            setSpe(spe.filter(e => e.id !== clicked));
+            setTime(time.filter(e => e.id !== clicked));
+            setStatus(status.filter(e => e.id !== clicked));
             setClicked(null);
           }}
         />

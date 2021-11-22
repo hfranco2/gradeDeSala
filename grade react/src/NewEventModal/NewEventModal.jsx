@@ -55,9 +55,7 @@ export const NewEventModal = ({ onSave, onClose, onSave1, onSave2, onSave3  }) =
               onSave1(vspe);
               onSave2(vtime);
               onSave3(vstatus);      
-              // onSave(spe);
-              // onSave(time);
-              // onSave(status);
+              
 
             
           }} 
