@@ -7,6 +7,7 @@ import { DeleteEventModal } from "../DeleteEventModal";
 import axios from "axios";
 
 export const App = () => {
+
   const [days, setDays] = useState([]);
 
   const [clicked, setClicked] = useState();

@@ -7,6 +7,7 @@ const helmet = require('helmet')
 
 // Import routes
 const agendamentoRouter = require('./routes/agendamento-route')
+const userRouter = require('./routes/user-route')
 
 // Set default port for express app
 const PORT = 4001
@@ -24,6 +25,7 @@ app.use(bodyParser.json())
 
 // Implement agendamento route
 app.use('/agendamento', agendamentoRouter)
+app.use('/user', userRouter)
 
 // Implement 500 error route
 app.use(function (err, req, res, next) {

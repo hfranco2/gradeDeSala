@@ -9,8 +9,6 @@ export const NewEventModal = ({ onSave, onClose, onSave1, onSave2, onSave3  }) =
   const [error, setError] = useState(false);
 
   return(
-
-    
     <>
       <div id="newEventModal">
         <h2>Novo Evento</h2>
