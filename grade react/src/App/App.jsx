@@ -81,21 +81,29 @@ export const App = () => {
       <div id="container">
         <div id="cabecalho">
           <div id="logo"></div>
-          <Link to="/login">Login</Link>
+
           <div id="titulo">
             <h1>Grade de Salas</h1>
           </div>
 
           <div id="lista">
             <ul>
-              <li>Anotações em vermelho indicam a ausência do profissional</li>
               <li>
-                Anotações em azul indicam a reposição de horas do profissional{" "}
+                Anotações em <span id="red">vermelho</span> indicam a ausência
+                do profissional
               </li>
               <li>
-                Anotações em verde indicam a atendimento em salas alternadas
+                Anotações em <span id="blue">azul </span>indicam a reposição de
+                horas do profissional
               </li>
-              <li>Anotações em laranja indicam férias do profissional</li>
+              <li>
+                Anotações em <span id="green">verde</span> indicam a atendimento
+                em salas alternadas
+              </li>
+              <li>
+                Anotações em <span id="orange">laranja</span> indicam férias do
+                profissional
+              </li>
             </ul>
           </div>
         </div>
@@ -250,6 +258,7 @@ export const App = () => {
             />
           ))}
         </div>
+        <Link to="/login">Login</Link>
       </div>
       {clicked && !eventForDate(clicked) && isAut(true) && (
         <NewEventModal
