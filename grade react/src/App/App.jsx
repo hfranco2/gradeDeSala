@@ -3,11 +3,13 @@ import { Day } from "../Day/Day";
 import { NewEventModal } from "../NewEventModal";
 import { DeleteEventModal } from "../DeleteEventModal";
 import PagesLogin from "../pages/Login/Login";
-import { useHistory } from "react-router";
+import { Route, useHistory } from "react-router";
+import { Link } from "react-router-dom";
+import Login from "../pages/Login/Login";
 
 export const App = () => {
   const [days, setDays] = useState([]);
-
+  const history = useHistory();
   const [clicked, setClicked] = useState();
 
   let [events, setEvents] = useState(
@@ -63,19 +65,27 @@ export const App = () => {
     [time],
     [status]
   );
-  function hist(event) {
-      return history.push("/");
-    
+
+  function isAut() {
+    let tk = null;
+    tk = JSON.parse(sessionStorage.getItem("token"));
+    if (tk == 1234) {
+      return true;
+    } else {
+      return false;
+    }
   }
+  console.log(isAut());
   return (
     <>
       <div id="container">
         <div id="cabecalho">
           <div id="logo"></div>
+          <Link to="/login">Login</Link>
           <div id="titulo">
             <h1>Grade de Salas</h1>
           </div>
-          <input type="button" onClick={hist} value="Login" />
+
           <div id="lista">
             <ul>
               <li>Anotações em vermelho indicam a ausência do profissional</li>
@@ -241,7 +251,7 @@ export const App = () => {
           ))}
         </div>
       </div>
-      {clicked && !eventForDate(clicked) && (
+      {clicked && !eventForDate(clicked) && isAut(true) && (
         <NewEventModal
           onClose={() => setClicked(null)}
           onSave={(title) => {
@@ -262,7 +272,7 @@ export const App = () => {
           }}
         />
       )}
-      {clicked && eventForDate(clicked) && (
+      {clicked && eventForDate(clicked) && isAut(true) && (
         <DeleteEventModal
           eventText={
             eventForDate(clicked).title +
@@ -283,3 +293,5 @@ export const App = () => {
     </>
   );
 };
+
+export default App;
