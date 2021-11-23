@@ -73,12 +73,19 @@ exports.agendamentoAll = async (req, res) => {
             'horario': horario,
             'status': status
           })
-          .th 
-        res.json({ message: `Nome \'${req.body.nome}\'` })
+          .then(userData => {
+            // Send books extracted from database in response
+            res.json(userData)
+          })
+          .catch(err => {
+            // Send a error message in response
+            res.json({ message: `There was an error retrieving agendamento: ${err}` })
+          }) 
+        // res.json({ message: `Nome \'${req.body.nome}\'` })
       })
       .catch(err => {
         // Send a error message in response
-        res.json({ message: `There was an error creating ${req.body.nome} book: ${err}` })
+        res.json({ message: `There was an error creating ${req.body.nome} agendamento: ${err}` })
       })
   }
 

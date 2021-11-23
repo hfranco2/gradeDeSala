@@ -38,6 +38,25 @@ Knex.schema
         .then(() => {
           // Log success message
           console.log('Table \'Agendamentos\' created')
+          for (let i = 0; i < 390; i++) {
+
+            knex('agendamentos')
+            .insert({ // insert new record, a book
+              'nome': '',
+              'especialidade': '',
+              'horario': '',
+              'status': 1
+            })
+            .then(() => {
+              // Send a success message in response
+              res.json({ message: `Nome \'${req.body.nome}\'` })
+            })
+            .catch(err => {
+              // Send a error message in response
+              res.json({ message: `There was an error creating ${req.body.nome} book: ${err}` })
+            })
+            
+          }
         })
         .catch((error) => {
           console.error(`There was an error creating table: ${error}`)
@@ -69,6 +88,20 @@ Knex.schema
         .then(() => {
           // Log success message
           console.log('Table \'Users\' created')
+
+          knex('users')
+          .insert({ // insert new record, a book
+            'usuario': 'admin',
+            'senha': '1234'
+          })
+          .then(() => {
+            // Send a success message in response
+            res.json({ message: `Nome \'${req.body.usuario}\'` })
+          })
+          .catch(err => {
+            // Send a error message in response
+            res.json({ message: `There was an error creating ${req.body.usuario} book: ${err}` })
+          })
         })
         .catch((error) => {
           console.error(`There was an error creating table: ${error}`)

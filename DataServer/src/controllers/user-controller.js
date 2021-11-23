@@ -87,3 +87,60 @@ exports.userAll = async (req, res) => {
         res.json({ statuscode: 0, message: `There was an error retrieving books: ${err}` })
       })
   }
+
+  exports.userChangePassword = async (req, res) => {
+    // Add new book to database
+    knex('users')
+      .select('*')
+      .where({
+        'usuario': req.body.usuario,
+        'senha' : req.body.senha
+      })
+      .then(data => {
+        knex('users')
+          .where('id', data.id)
+          .update({
+            'senha': req.body.novasenha
+          })
+          .then(userData => {
+            // Send books extracted from database in response
+            res.json(userData)
+          })
+          .catch(err => {
+            // Send a error message in response
+            res.json({ message: `There was an error retrieving user: ${err}` })
+          })  
+        // res.json({ message: `Nome \'${req.body.usuario}\'` })
+      })
+      .catch(err => {
+        // Send a error message in response
+        res.json({ message: `There was an error creating ${req.body.usuario} book: ${err}` })
+      })
+  }
+
+  exports.userResetPassword = async (req, res) => {
+    // Add new book to database
+    knex('users')
+      .select('*')
+      .where({ 'usuario': req.body.usuario })
+      .then(data => {
+        knex('users')
+          .where('id', data.id)
+          .update({
+            'senha': '1234'
+          })
+          .then(userData => {
+            // Send books extracted from database in response
+            res.json(userData)
+          })
+          .catch(err => {
+            // Send a error message in response
+            res.json({ message: `There was an error retrieving user: ${err}` })
+          })  
+        // res.json({ message: `Nome \'${req.body.usuario}\'` })
+      })
+      .catch(err => {
+        // Send a error message in response
+        res.json({ message: `There was an error creating ${req.body.usuario} user: ${err}` })
+      })
+  }

@@ -19,6 +19,10 @@ router.get('/usuario', userRoutes.userByUsuario)
 
 router.get('/login', userRoutes.userLogin)
 
+router.put('/changepassword', userRoutes.userChangePassword)
+
+router.put('/resetpassword', userRoutes.userResetPassword)
+
 
 // Export router
 module.exports = router
