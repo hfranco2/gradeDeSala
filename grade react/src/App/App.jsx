@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Day } from "../Day/Day";
 import { NewEventModal } from "../NewEventModal";
 import { DeleteEventModal } from "../DeleteEventModal";
-import UserLogin from "../components/Login/login";
+import PagesLogin from "../pages/Login/Login";
+import { useHistory } from "react-router";
 
 export const App = () => {
   const [days, setDays] = useState([]);
@@ -62,7 +63,10 @@ export const App = () => {
     [time],
     [status]
   );
-
+  function hist(event) {
+      return history.push("/");
+    
+  }
   return (
     <>
       <div id="container">
@@ -71,7 +75,7 @@ export const App = () => {
           <div id="titulo">
             <h1>Grade de Salas</h1>
           </div>
-          <input type="button" onClick={UserLogin} value="Login" />
+          <input type="button" onClick={hist} value="Login" />
           <div id="lista">
             <ul>
               <li>Anotações em vermelho indicam a ausência do profissional</li>

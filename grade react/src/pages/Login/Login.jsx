@@ -1,6 +1,6 @@
 import React from "react";
-import UserLogin from "./component/Login";
+import UserLogin from "../../components/Login/login";
 
-const PagesLogin = () => <UserLogin />;
+const PagesLogin = () => <UserLogin/>;
 
 export default PagesLogin;
