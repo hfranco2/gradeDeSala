@@ -2,8 +2,8 @@
   "name": "grade-react2",
   "version": "1.0.0",
   "description": "convertendo a grade de vanilla para react",
-  "main": "index.js",
-  "scripts": {
+  "proxy":"http://localhost:4001",
+  "main": "index.js",  "scripts": {
     "start": "snowpack dev",
     "build": "react-scripts build",
     "test": "react-scripts test",

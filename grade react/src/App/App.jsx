@@ -23,7 +23,7 @@ export const App = () => {
       .get(`${uri}/agendamento/all`)
       .then((response) => {
         // Update the books state
-        console.log(response.data[0].nome);
+        // console.log(response.data[0].nome);
       })
       .catch((error) =>
         console.error(`There was an error retrieving the book list: ${error}`)
@@ -34,9 +34,9 @@ export const App = () => {
     // Send POST request to 'books/create' endpoint
     axios
       .post(`${uri}/agendamento/create`, {
-        nome: "nome teste3",
-        // especialidade: 'especialidade teste',
-        // horario: 'horario teste',
+        title: "nome teste3",
+        especialidade: "especialidade teste",
+        horario: "horario teste",
         status: 1,
       })
       .then((res) => {
@@ -50,7 +50,8 @@ export const App = () => {
         console.error(`There was an error creating the ${name} book: ${error}`)
       );
   };
-
+  // console.log(fetchAgendamentos());
+  console.log(agendamentoCreate());
   const [days, setDays] = useState([]);
   const history = useHistory();
   const [clicked, setClicked] = useState();
@@ -71,8 +72,8 @@ export const App = () => {
   // }, []);
 
   let [events, setEvents] = useState(
-    localStorage.getItem("events")
-      ? JSON.parse(localStorage.getItem("events"))
+    localStorage.getItem("event")
+      ? JSON.parse(localStorage.getItem("event"))
       : []
   );
   let [spe, setSpe] = useState(
@@ -137,7 +138,7 @@ export const App = () => {
       return false;
     }
   }
-  console.log(isAut());
+  // console.log(isAut());
   return (
     <>
       <div id="container">
@@ -317,7 +318,7 @@ export const App = () => {
               status={d.status}
               onClick={() => {
                 setClicked(d.id);
-                console.log(d);
+                // console.log(d);
               }}
             />
           ))}

@@ -7,7 +7,7 @@ export const Day = ({ day, onClick, status }) => {
   const className3 = `day3`;
   const className4 = `day4`;
   const id = `div${day.id}`;
-  console.log(status);
+  // console.log(status);
 
   if (status != undefined) {
     if (status.vstatus == "2") {
