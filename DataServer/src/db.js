@@ -40,7 +40,7 @@ Knex.schema
           console.log('Table \'Agendamentos\' created')
           for (let i = 0; i < 390; i++) {
 
-            knex('agendamentos')
+            Knex('agendamentos')
             .insert({ // insert new record, a book
               'nome': '',
               'especialidade': '',
@@ -49,11 +49,11 @@ Knex.schema
             })
             .then(() => {
               // Send a success message in response
-              res.json({ message: `Nome \'${req.body.nome}\'` })
+              console.log(`Agendamento ${i} criado`)
             })
             .catch(err => {
               // Send a error message in response
-              res.json({ message: `There was an error creating ${req.body.nome} book: ${err}` })
+              console.error(`There was an error creating ${req.body.nome} book: ${err}`)
             })
             
           }
@@ -89,18 +89,18 @@ Knex.schema
           // Log success message
           console.log('Table \'Users\' created')
 
-          knex('users')
+          Knex('users')
           .insert({ // insert new record, a book
             'usuario': 'admin',
             'senha': '1234'
           })
           .then(() => {
             // Send a success message in response
-            res.json({ message: `Nome \'${req.body.usuario}\'` })
+            console.log(`Usuario admin criado`)
           })
           .catch(err => {
             // Send a error message in response
-            res.json({ message: `There was an error creating ${req.body.usuario} book: ${err}` })
+            console.error(`There was an error creating ${req.body.usuario} book: ${err}`)
           })
         })
         .catch((error) => {

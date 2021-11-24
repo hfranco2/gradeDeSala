@@ -1,95 +1,80 @@
 // Import database
 const knex = require('../db')
 const guid = require('uuid')
+const manager = require('../manager/user-manager')
 
 exports.userAll = async (req, res) => {
-    // Get all books from database
     knex
-      .select('*') // select all records
-      .from('users') // from 'books' table
+      .select('*') 
+      .from('users')
       .then(userData => {
-        // Send books extracted from database in response
         res.json(userData)
       })
       .catch(err => {
-        // Send a error message in response
         res.json({ message: `There was an error retrieving books: ${err}` })
       })
   }
 
   exports.userCreate = async (req, res) => {
-    // Add new book to database
     knex('users')
-      .insert({ // insert new record, a book
+      .insert({ 
         'usuario': req.body.usuario,
         'senha': req.body.senha
       })
       .then(() => {
-        // Send a success message in response
         res.json({ message: `Nome \'${req.body.usuario}\'` })
       })
       .catch(err => {
-        // Send a error message in response
         res.json({ message: `There was an error creating ${req.body.usuario} book: ${err}` })
       })
   }
 
   exports.userDelete = async (req, res) => {
-    // Find specific book in the database and remove it
     knex('users')
-      .where('id', req.body.id) // find correct record based on id
+      .where('usuario', req.body.usuario)
       .del() 
       .then(() => {
-        // Send a success message in response
-        res.json({ message: `users ${req.body.id} deleted.` })
+        res.json({ message: `users ${req.body.usuario} deleted.` })
       })
       .catch(err => {
-        // Send a error message in response
-        res.json({ message: `There was an error deleting ${req.body.id} users: ${err}` })
+        res.json({ message: `There was an error deleting ${req.body.usuario} users: ${err}` })
       })
   }
 
   exports.userByUsuario = async (req, res) => {
-    // Get all books from database
     knex
-      .select('*') // select all records
-      .from('users') // from 'books' table
+      .select('*')
+      .from('users')
       .where('usuario', req.body.usuario)
       .then(userData => {
-        // Send books extracted from database in response
         res.json(userData)
       })
       .catch(err => {
-        // Send a error message in response
         res.json({ message: `There was an error retrieving books: ${err}` })
       })
   }
 
   exports.userLogin = async (req, res) => {
-    // Get all books from database
     knex
-      .select('*') // select all records
-      .from('users') // from 'books' table
+      .select('*')
+      .from('users')
       .where({
         'usuario': req.body.usuario,
         'senha' : req.body.senha
       })
       .then(userData => {
-        // Send books extracted from database in response
         res.json({
           statuscode: 1,
           message: "Usuario logado com sucesso",
-          token: guid.v4().toString()
+          token: manager.addUser(userData.usuario)
         })
       })
       .catch(err => {
-        // Send a error message in response
         res.json({ statuscode: 0, message: `There was an error retrieving books: ${err}` })
       })
   }
 
   exports.userChangePassword = async (req, res) => {
-    // Add new book to database
     knex('users')
       .select('*')
       .where({
@@ -98,49 +83,41 @@ exports.userAll = async (req, res) => {
       })
       .then(data => {
         knex('users')
-          .where('id', data.id)
+          .where('usuario', req.body.usuario)
           .update({
             'senha': req.body.novasenha
           })
           .then(userData => {
-            // Send books extracted from database in response
+
             res.json(userData)
           })
           .catch(err => {
-            // Send a error message in response
             res.json({ message: `There was an error retrieving user: ${err}` })
           })  
-        // res.json({ message: `Nome \'${req.body.usuario}\'` })
       })
       .catch(err => {
-        // Send a error message in response
         res.json({ message: `There was an error creating ${req.body.usuario} book: ${err}` })
       })
   }
 
   exports.userResetPassword = async (req, res) => {
-    // Add new book to database
     knex('users')
       .select('*')
       .where({ 'usuario': req.body.usuario })
       .then(data => {
         knex('users')
-          .where('id', data.id)
+          .where({ 'usuario': req.body.usuario })
           .update({
             'senha': '1234'
           })
           .then(userData => {
-            // Send books extracted from database in response
             res.json(userData)
           })
           .catch(err => {
-            // Send a error message in response
             res.json({ message: `There was an error retrieving user: ${err}` })
           })  
-        // res.json({ message: `Nome \'${req.body.usuario}\'` })
       })
       .catch(err => {
-        // Send a error message in response
         res.json({ message: `There was an error creating ${req.body.usuario} user: ${err}` })
       })
   }

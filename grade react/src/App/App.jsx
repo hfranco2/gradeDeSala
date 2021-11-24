@@ -15,11 +15,14 @@ export const App = () => {
   // const [status, setStatus] = useState();
   const fetchAgendamentos = async () => {
     // Send GET request to 'books/all' endpoint
+    
+    let retorno = await axios.get("http://localhost:4001/agendamento/all");
+    retorno.data
     axios
       .get("http://localhost:4001/agendamento/all")
       .then((response) => {
         // Update the books state
-        console.log(response.data);
+        console.log(response.data[0].nome);
       })
       .catch((error) =>
         console.error(`There was an error retrieving the book list: ${error}`)
@@ -61,10 +64,6 @@ export const App = () => {
       ? JSON.parse(localStorage.getItem("status"))
       : []
   );
-
-  useEffect(() => {
-    agendamentoCreate();
-  }, []);
 
   let eventForDate = (id) => events.find((e) => e.id === id);
   useEffect(() => {
