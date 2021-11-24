@@ -188,7 +188,8 @@ li {
 .day,
 .day1,
 .day2,
-.day3 {
+.day3,
+.day4 {
   width: 100px;
   padding: 10px;
   height: 100px;
@@ -260,8 +261,25 @@ li {
   overflow: hidden;
   text-align: center;
 }
-.event2 {
+.event1,
+.time1,
+.spe1 {
   color: red;
+}
+.event2,
+.time2,
+.spe2 {
+  color: blue;
+}
+.event3,
+.time3,
+.spe3 {
+  color: green;
+}
+.event4,
+.time4,
+.spe4 {
+  color: orange;
 }
 .padding {
   cursor: default !important;

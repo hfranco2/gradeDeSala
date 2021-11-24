@@ -7,10 +7,66 @@ import { Route, useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import Login from "../pages/Login/Login";
 
+import api from "../api/axios";
+
 export const App = () => {
+  // let uri = "http://localhost:4001";
+  //Exemplo para chamar a api
+  // const fetchAgendamentos = async () => {
+  // Send GET request to 'books/all' endpoint
+
+  // let retorno = await axios.get("http://localhost:4001/agendamento/all");
+  // retorno.data;
+  // axios
+  //   .get("http://localhost:4001/agendamento/all")
+  //   .then((response) => {
+  // Update the books state
+  //       console.log(response.data[0].nome);
+  //     })
+  //     .catch((error) =>
+  //       console.error(`There was an error retrieving the book list: ${error}`)
+  //     );
+  // };
+
+  // const agendamentoCreate = () => {
+  // Send POST request to 'books/create' endpoint
+  // axios
+  //   .post("http://localhost:4001/agendamento/create", {
+  //     nome: "nome teste3",
+  // especialidade: 'especialidade teste',
+  // horario: 'horario teste',
+  //   status: 1,
+  // })
+  // .then((res) => {
+  //   console.log(res.data);
+
+  // Fetch all books to refresh
+  // the books on the bookshelf list
+  //       fetchAgendamentos();
+  //     })
+  //     .catch((error) =>
+  //       console.error(`There was an error creating the ${name} book: ${error}`)
+  //     );
+  // };
+
   const [days, setDays] = useState([]);
   const history = useHistory();
   const [clicked, setClicked] = useState();
+
+  // useEffect(() => {
+  //   console.log(fetchAgendamentos());
+  // }, []);
+  // let retorno = await axios.get("http://localhost:4001/agendamento/all");
+  // console.log(retorno);
+
+  // useEffect(() => {
+  //   api
+  //     .get("/agendamento/all")
+  //     .then((response) => console.log(response))
+  //     .catch((err) => {
+  //       console.error("ops! ocorreu um erro" + err);
+  //     });
+  // }, []);
 
   let [events, setEvents] = useState(
     localStorage.getItem("events")
