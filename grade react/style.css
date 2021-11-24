@@ -90,7 +90,7 @@ a {
 }
 #weekdays2 {
   width: 1000px;
-  height: 50px;
+  height: 10px;
   display: grid;
   color: #090794;
   font-weight: bold;
@@ -104,7 +104,7 @@ a {
 #weekdays2 div {
   width: 200px;
   height: 50px;
-  padding: 50px;
+  padding: 40px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -228,6 +228,10 @@ li {
   max-height: 55px;
   overflow: hidden;
   text-align: center;
+}
+
+.event1 {
+  color: red;
 }
 .spe,
 .spe1,

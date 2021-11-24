@@ -12,8 +12,8 @@ export const NewEventModal = ({
   let [vtime, setTime] = useState("");
   let [vstatus, setStatus] = useState("1");
   let [error, setError] = useState(false);
-  vstatus = "1";
-  return (
+  // vstatus = "1";
+  render: return (
     <>
       <div id="newEventModal">
         <h2>Novo Evento</h2>
@@ -45,7 +45,6 @@ export const NewEventModal = ({
           value={vstatus}
           onChange={(e) => setStatus(e.target.value)}
           id="eventTitleInput2"
-          placeholder="Horario"
         >
           <option value="1">Normal</option>
           <option value="2">Ausênsia</option>

@@ -26,7 +26,7 @@ export const App = () => {
   let [status, setStatus] = useState(
     localStorage.getItem("status")
       ? JSON.parse(localStorage.getItem("status"))
-      : []
+      : [""]
   );
   let eventForDate = (id) => events.find((e) => e.id === id);
   useEffect(() => {
@@ -44,6 +44,10 @@ export const App = () => {
   useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));
   }, [status]);
+  // eventForDate = ["1"];
+  // eventForDate1 = ["1"];
+  // eventForDate2 = ["1"];
+  // eventForDate3 = ["1"];
 
   useEffect(
     () => {
@@ -252,7 +256,7 @@ export const App = () => {
             <Day
               key={index}
               day={d}
-              status={1}
+              status={d.status}
               onClick={() => {
                 setClicked(d.id);
                 console.log(d);
