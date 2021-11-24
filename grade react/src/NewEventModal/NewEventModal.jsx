@@ -7,12 +7,12 @@ export const NewEventModal = ({
   onSave2,
   onSave3,
 }) => {
-  const [title, setTitle] = useState("");
-  const [vspe, setSpe] = useState("");
-  const [vtime, setTime] = useState("");
-  const [vstatus, setStatus] = useState("1");
-  const [error, setError] = useState(false);
-
+  let [title, setTitle] = useState("");
+  let [vspe, setSpe] = useState("");
+  let [vtime, setTime] = useState("");
+  let [vstatus, setStatus] = useState("1");
+  let [error, setError] = useState(false);
+  vstatus = "1";
   return (
     <>
       <div id="newEventModal">

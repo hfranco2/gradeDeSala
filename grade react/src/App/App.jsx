@@ -252,8 +252,10 @@ export const App = () => {
             <Day
               key={index}
               day={d}
+              status={1}
               onClick={() => {
                 setClicked(d.id);
+                console.log(d);
               }}
             />
           ))}
@@ -285,9 +287,10 @@ export const App = () => {
         <DeleteEventModal
           eventText={
             eventForDate(clicked).title +
+            " " +
             eventForDate1(clicked).vspe +
-            eventForDate2(clicked).vtime +
-            eventForDate3(clicked).vstatus
+            " " +
+            eventForDate2(clicked).vtime
           }
           onClose={() => setClicked(null)}
           onDelete={() => {

@@ -31,18 +31,22 @@ a {
 }
 #orange {
   color: orange;
+  text-decoration: underline;
 }
 #blue {
   color: blue;
+  text-decoration: underline;
 }
 #green {
   color: green;
+  text-decoration: underline;
 }
 #red {
   color: red;
+  text-decoration: underline;
 }
 #container {
-  width: 1100px;
+  width: 1114px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -67,6 +71,8 @@ a {
 #titulo {
   display: flex;
   justify-content: flex-end;
+  font-weight: bold;
+  font-size: large;
 }
 #lista {
   margin-left: 200px;
@@ -86,7 +92,8 @@ a {
   width: 1000px;
   height: 50px;
   display: grid;
-  color: #247ba0;
+  color: #090794;
+  font-weight: bold;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 1fr;
   justify-content: space-evenly;
@@ -105,7 +112,7 @@ a {
 
 #periodo {
   display: flex;
-  width: 1000px;
+  width: 100px;
   position: left;
   font-size: 13px;
 }
@@ -134,6 +141,7 @@ a {
 
 #calendar {
   width: 1000px;
+  border: solid 1px black;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -149,10 +157,14 @@ ul {
 li {
   border-top: solid 1px black;
   text-align: center;
+  font-weight: bold;
 }
 #localizacao {
   display: flex;
   flex-direction: column;
+  border-top: solid 1px black;
+
+  border-left: solid 1px black;
 }
 .salas {
   width: 100px;
@@ -160,20 +172,23 @@ li {
   height: 100px;
   cursor: pointer;
   box-sizing: border-box;
-  background-color: white;
+  background-color: rgb(228, 234, 236);
   margin: 0px;
   box-shadow: 0px 0px 3px #cbd4c2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-bottom: solid 1px black;
 }
 .salas div {
   color: red;
   text-align: center;
 }
 .day,
-.day1 {
+.day1,
+.day2,
+.day3 {
   width: 100px;
   padding: 10px;
   height: 100px;
@@ -185,6 +200,11 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-left: solid 1px black;
+  border-bottom: solid 1px black;
+}
+.day1 {
+  color: red;
 }
 .day:hover,
 .day1:hover {
@@ -195,14 +215,49 @@ li {
 .day1 + .currentDay {
   background-color: #e8f4fa;
 }
-.event {
-  font-size: 15px;
+.event,
+.event1,
+.event2,
+.event3,
+.event4 {
+  font-size: 20px;
   padding: 3px;
   background-color: #58bae4;
-  color: white;
+
   border-radius: 5px;
   max-height: 55px;
   overflow: hidden;
+  text-align: center;
+}
+.spe,
+.spe1,
+.spe2,
+.spe3,
+.spe4 {
+  font-size: 15px;
+  padding: 3px;
+  font-weight: bold;
+  text-decoration: underline;
+  border-radius: 5px;
+  max-height: 55px;
+  overflow: hidden;
+  text-align: center;
+}
+.time,
+.time1,
+.time2,
+.time3,
+.time4 {
+  font-size: 12px;
+  padding: 3px;
+  font-weight: bold;
+  border-radius: 5px;
+  max-height: 55px;
+  overflow: hidden;
+  text-align: center;
+}
+.event2 {
+  color: red;
 }
 .padding {
   cursor: default !important;
