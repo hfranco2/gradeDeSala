@@ -11,15 +11,16 @@ import Login from "../pages/Login/Login";
 import axios from "axios";
 
 export const App = () => {
-  let uri = "http://localhost:4001";
-  // Exemplo para chamar a api
+  const uri = "http://localhost:4001";
+
+  //Exemplo para chamar a api
   const fetchAgendamentos = async () => {
     // Send GET request to 'books/all' endpoint
 
-    let retorno = await axios.get("http://localhost:4001/agendamento/all");
+    let retorno = await axios.get(`${uri}/agendamento/all`);
     retorno.data;
     axios
-      .get("http://localhost:4001/agendamento/all")
+      .get(`${uri}/agendamento/all`)
       .then((response) => {
         // Update the books state
         console.log(response.data[0].nome);
@@ -32,10 +33,10 @@ export const App = () => {
   const agendamentoCreate = () => {
     // Send POST request to 'books/create' endpoint
     axios
-      .post("http://localhost:4001/agendamento/create", {
+      .post(`${uri}/agendamento/create`, {
         nome: "nome teste3",
-        especialidade: "especialidade teste",
-        horario: "horario teste",
+        // especialidade: 'especialidade teste',
+        // horario: 'horario teste',
         status: 1,
       })
       .then((res) => {
