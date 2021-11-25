@@ -181,16 +181,16 @@ export const App = () => {
           </div>
           <div id="periodo">
             <div id="blank"> </div>
-            <div className="pp">Manhã</div>
-            <div className="pp">Tarde</div>
-            <div className="pp">Manhã</div>
-            <div className="pp">Tarde</div>
-            <div className="pp">Manhã</div>
-            <div className="pp">Tarde</div>
-            <div className="pp">Manhã</div>
-            <div className="pp">Tarde</div>
-            <div className="pp">Manhã</div>
-            <div className="pp">Tarde</div>
+            <div className="pp"> Manhã </div>
+            <div className="pp"> Tarde </div>
+            <div className="pp"> Manhã </div>
+            <div className="pp"> Tarde </div>
+            <div className="pp"> Manhã </div>
+            <div className="pp"> Tarde </div>
+            <div className="pp"> Manhã </div>
+            <div className="pp"> Tarde </div>
+            <div className="pp"> Manhã </div>
+            <div className="pp"> Tarde </div>
           </div>
         </div>
         <div id="localizacao">
