@@ -7,6 +7,7 @@ const agendamentosRoutes = require('../controllers/agendamento-controller.js')
 const router = express.Router()
 
 router.get('/all', agendamentosRoutes.agendamentoAll)
+router.get('/nomes', agendamentosRoutes.nomeAll)
 
 router.post('/create', agendamentosRoutes.agendamentoCreate)
 

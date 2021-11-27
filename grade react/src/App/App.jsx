@@ -18,47 +18,75 @@ export const App = () => {
     // Send GET request to 'books/all' endpoint
 
     let retorno = await axios.get(`${uri}/agendamento/all`);
-    retorno.data;
-    axios
-      .get(`${uri}/agendamento/all`)
-      .then((response) => {
-        // Update the books state
-        // console.log(response.data[0].nome);
-      })
-      .catch((error) =>
-        console.error(`There was an error retrieving the book list: ${error}`)
-      );
+    return await retorno.data;
+    // axios
+    //   .get(`${uri}/agendamento/all`)
+    //   .then((response) => {
+    //     // Update the books state
+    //     // console.log(response.data[0].nome);
+    //     return response
+    //   })
+    //   .catch((error) =>
+    //     console.error(`There was an error retrieving the book list: ${error}`)
+    //   );
   };
 
-  const agendamentoCreate = () => {
+  const agendamentoCreate = async (nome, especialidade, horario, status) => {
     // Send POST request to 'books/create' endpoint
-    axios
+    await axios
       .post(`${uri}/agendamento/create`, {
-        title: "nome teste3",
-        especialidade: "especialidade teste",
-        horario: "horario teste",
+        nome: nome,
+        especialidade: especialidade,
+        horario: horario,
         status: 1,
       })
-      .then((res) => {
-        console.log(res.data);
-
-        // Fetch all books to refresh
-        // the books on the bookshelf list
-        fetchAgendamentos();
-      })
       .catch((error) =>
-        console.error(`There was an error creating the ${name} book: ${error}`)
+        console.error(`There was an error creating the ${nome} book: ${error}`)
       );
   };
+
+  const agendamentoUpdate = async (id, nome, especialidade, horario, status) => {
+    // Send POST request to 'books/create' endpoint
+    await axios
+      .put(`${uri}/agendamento/update`, {
+        id: id,
+        nome: nome,
+        especialidade: especialidade,
+        horario: horario,
+        status: 1,
+      })
+      .catch((error) =>
+        console.error(`There was an error creating the ${nome} book: ${error}`)
+      );
+  };
+  let retorno = [];
+  // agendamentoCreate("teste nome 35", "", "14:00 as 18:00")
+
+  const [testes, setTestes] = useState([]);
+
+  // setTestes(
+  // fetchAgendamentos().then((response) =>{     
+  //   retorno = response;
+  //   // console.log(response)
+  // }));
+  
+  // console.log(testes)
   // console.log(fetchAgendamentos());
-  console.log(agendamentoCreate());
+  // console.log(agendamentoCreate());
   const [days, setDays] = useState([]);
   const history = useHistory();
   const [clicked, setClicked] = useState();
 
-  // useEffect(() => {
-  //   console.log(fetchAgendamentos());
-  // }, []);
+  
+  useEffect(() => {
+    fetchAgendamentos().then((response) =>{     
+      setTestes(response.map(n => n.nome))
+    // console.log(response)
+    }).catch((err) => {
+        console.log(err)
+    })
+    // console.log(testes)
+  }, []);
   // let retorno = await axios.get("http://localhost:4001/agendamento/all");
   // console.log(retorno);
 
@@ -71,6 +99,7 @@ export const App = () => {
   //     });
   // }, []);
 
+  console.log(testes)
   let [events, setEvents] = useState(
     localStorage.getItem("event")
       ? JSON.parse(localStorage.getItem("event"))
@@ -342,6 +371,10 @@ export const App = () => {
           }}
           onSave3={(vstatus) => {
             setStatus([...status, { vstatus, id: clicked }]);
+            setClicked(null);
+          }}
+          onSave4={(title, vspe, vtime, vstatus) =>{
+            agendamentoUpdate(clicked, title, vspe, vtime, vstatus)
             setClicked(null);
           }}
         />

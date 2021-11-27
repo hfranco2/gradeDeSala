@@ -12,6 +12,18 @@ exports.agendamentoAll = async (req, res) => {
       })
   }
 
+  exports.nomeAll = async (req, res) => {
+    knex
+      .select('nome')
+      .from('agendamentos')
+      .then(userData => {
+        res.json(userData)
+      })
+      .catch(err => {
+        res.json({ message: `There was an error retrieving books: ${err}` })
+      })
+  }
+
   exports.agendamentoCreate = async (req, res) => {
     knex('agendamentos')
       .insert({

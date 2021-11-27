@@ -6,6 +6,7 @@ export const NewEventModal = ({
   onSave1,
   onSave2,
   onSave3,
+  onSave4,
 }) => {
   let [title, setTitle] = useState("");
   let [vspe, setSpe] = useState("");
@@ -58,6 +59,7 @@ export const NewEventModal = ({
             onSave1(vspe);
             onSave2(vtime);
             onSave3(vstatus);
+            onSave4(title, vspe, vtime, vstatus);
           }}
           id="saveButton"
         >
