@@ -11,7 +11,7 @@ router.get('/nomes', agendamentosRoutes.nomeAll)
 
 router.post('/create', agendamentosRoutes.agendamentoCreate)
 
-router.delete('/clear', agendamentosRoutes.agendamentoClear)
+router.put('/clear', agendamentosRoutes.agendamentoClear)
 
 router.put('/update', agendamentosRoutes.agendamentoUpdate)
 

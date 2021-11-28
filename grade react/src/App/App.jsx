@@ -19,16 +19,6 @@ export const App = () => {
 
     let retorno = await axios.get(`${uri}/agendamento/all`);
     return await retorno.data;
-    // axios
-    //   .get(`${uri}/agendamento/all`)
-    //   .then((response) => {
-    //     // Update the books state
-    //     // console.log(response.data[0].nome);
-    //     return response
-    //   })
-    //   .catch((error) =>
-    //     console.error(`There was an error retrieving the book list: ${error}`)
-    //   );
   };
 
   const agendamentoCreate = async (nome, especialidade, horario, status) => {
@@ -45,7 +35,13 @@ export const App = () => {
       );
   };
 
-  const agendamentoUpdate = async (id, nome, especialidade, horario, status) => {
+  const agendamentoUpdate = async (
+    id,
+    nome,
+    especialidade,
+    horario,
+    status
+  ) => {
     // Send POST request to 'books/create' endpoint
     await axios
       .put(`${uri}/agendamento/update`, {
@@ -53,110 +49,117 @@ export const App = () => {
         nome: nome,
         especialidade: especialidade,
         horario: horario,
-        status: 1,
+        status: status,
+      })
+      .catch((error) =>
+        console.error(`There was an error creating the ${nome} book: ${error}`)
+      );
+  };
+  const agendamentoDelete = async (id) => {
+    console.log(id);
+    await axios
+      .put(`${uri}/agendamento/clear`, {
+        id: id,
       })
       .catch((error) =>
         console.error(`There was an error creating the ${nome} book: ${error}`)
       );
   };
   let retorno = [];
-  // agendamentoCreate("teste nome 35", "", "14:00 as 18:00")
 
   const [testes, setTestes] = useState([]);
 
-  // setTestes(
-  // fetchAgendamentos().then((response) =>{     
-  //   retorno = response;
-  //   // console.log(response)
-  // }));
-  
-  // console.log(testes)
-  // console.log(fetchAgendamentos());
-  // console.log(agendamentoCreate());
   const [days, setDays] = useState([]);
   const history = useHistory();
   const [clicked, setClicked] = useState();
 
-  
-  useEffect(() => {
-    fetchAgendamentos().then((response) =>{     
-      setTestes(response.map(n => n.nome))
-    // console.log(response)
-    }).catch((err) => {
-        console.log(err)
-    })
-    // console.log(testes)
-  }, []);
-  // let retorno = await axios.get("http://localhost:4001/agendamento/all");
-  // console.log(retorno);
-
   // useEffect(() => {
-  //   api
-  //     .get("/agendamento/all")
-  //     .then((response) => console.log(response))
+  //   fetchAgendamentos()
+  //     .then((response) => {
+  //       setTestes(response.map((n) => n.nome));
+  //     })
   //     .catch((err) => {
-  //       console.error("ops! ocorreu um erro" + err);
+  //       console.log(err);
   //     });
   // }, []);
 
-  console.log(testes)
-  let [events, setEvents] = useState(
-    localStorage.getItem("event")
-      ? JSON.parse(localStorage.getItem("event"))
-      : []
-  );
-  let [spe, setSpe] = useState(
-    localStorage.getItem("spe") ? JSON.parse(localStorage.getItem("spe")) : []
-  );
-  let [time, setTime] = useState(
-    localStorage.getItem("time") ? JSON.parse(localStorage.getItem("time")) : []
-  );
-  let [status, setStatus] = useState(
-    localStorage.getItem("status")
-      ? JSON.parse(localStorage.getItem("status"))
-      : [""]
-  );
-  let eventForDate = (id) => events.find((e) => e.id === id);
-  useEffect(() => {
-    localStorage.setItem("events", JSON.stringify(events));
-  }, [events]);
-  let eventForDate1 = (id) => spe.find((s) => s.id === id);
-  useEffect(() => {
-    localStorage.setItem("spe", JSON.stringify(spe));
-  }, [spe]);
-  let eventForDate2 = (id) => time.find((t) => t.id === id);
-  useEffect(() => {
-    localStorage.setItem("time", JSON.stringify(time));
-  }, [time]);
-  let eventForDate3 = (id) => status.find((a) => a.id === id);
-  useEffect(() => {
-    localStorage.setItem("status", JSON.stringify(status));
-  }, [status]);
-  // eventForDate = ["1"];
-  // eventForDate1 = ["1"];
-  // eventForDate2 = ["1"];
-  // eventForDate3 = ["1"];
+  // let [events, setEvents] = useState([]);
+  // let [spe, setSpe] = useState([]);
+  // let [time, setTime] = useState([]);
+  // let [status, setStatus] = useState([]);
+  let eventForDate = (id) => days.find((e) => e.id === id);
+  // useEffect(() => {
+  //   fetchAgendamentos()
+  //     .then((response) => {
+  //       setEvents(response.map((n) => n.nome));
+  //       setSpe(response.map((n) => n.especialidade));
+  //       setTime(response.map((n) => n.horario));
+  //       setStatus(response.map((n) => n.status));
+  //       // console.log(response)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // console.log(testes)
+  // }, []);
+  // let eventForDate1 = (id) => spe.find((s) => s.id === id);
+  // useEffect(() => {
+  //   fetchAgendamentos()
+  //     .then((response) => {
+  //       setSpe(response.map((n) => n.especialidade));
+  //       // console.log(response)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   // console.log(testes)
+  // }, [spe]);
+  // let eventForDate2 = (id) => time.find((t) => t.id === id);
+  // useEffect(() => {
+  //   fetchAgendamentos()
+  //     .then((response) => {
+  //       setTime(response.map((n) => n.horario));
+  //       // console.log(response)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   // console.log(testes)
+  // }, [time]);
+  // let eventForDate3 = (id) => status.find((a) => a.id === id);
+  // useEffect(() => {
+  //   fetchAgendamentos()
+  //     .then((response) => {
+  //       setStatus(response.map((n) => n.status));
+  //       // console.log(response)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   // console.log(testes)
+  // }, [status]);
 
-  useEffect(
-    () => {
-      const daysArr = [];
-      for (let i = 1; i <= 380; i++) {
-        daysArr.push({
-          value: "div" + i,
-          event: eventForDate(i),
-          id: i,
-          spe: eventForDate1(i),
-          time: eventForDate2(i),
-          status: eventForDate3(i),
-        });
-      }
-      setDays(daysArr);
-    },
-    [events],
-    [spe],
-    [time],
-    [status]
-  );
+  useEffect(() => {
+    fetchAgendamentos()
+      .then((response) => {
+        const daysArr = [];
+        // console.log(response)
+        for (let i = 0; i < 380; i++) {
+          daysArr.push({
+            value: "div" + i,
+            event: response[i].nome,
+            id: response[i].id,
+            spe: response[i].especialidade,
+            time: response[i].horario,
+            status: response[i].status,
+          });
+        }
+        setDays(daysArr);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
   function isAut() {
     let tk = null;
@@ -347,57 +350,70 @@ export const App = () => {
               status={d.status}
               onClick={() => {
                 setClicked(d.id);
-                // console.log(d);
+                console.log(d);
               }}
             />
           ))}
         </div>
         <Link to="/login">Login</Link>
       </div>
-      {clicked && !eventForDate(clicked) && isAut(true) && (
+      {clicked && isAut(true) && (
         <NewEventModal
           onClose={() => setClicked(null)}
-          onSave={(title) => {
-            setEvents([...events, { title, id: clicked }]);
+          onSave={(title, vspe, vtime, vstatus) => {
+            setDays([...days, { title, vspe, vtime, vstatus, id: clicked }]);
+            agendamentoUpdate(clicked, title, vspe, vtime, vstatus);
+            console.log(vstatus);
             setClicked(null);
           }}
-          onSave1={(vspe) => {
-            setSpe([...spe, { vspe, id: clicked }]);
+          onDelete={() => {
+            agendamentoDelete(clicked)
+              .then((res) => {
+                // console.log(res);
+                // fetchAgendamentos().then((res) => {
+                //   console.log(res);
+                // });
+                // console.log(res);
+                // console.log(clicked);
+              })
+              .catch((erro) => {
+                console.log(erro);
+              });
+            setDays(days.filter((e) => e.id !== clicked));
             setClicked(null);
           }}
-          onSave2={(vtime) => {
-            setTime([...time, { vtime, id: clicked }]);
-            setClicked(null);
+          atitle={() => {
+            return eventForDate(clicked).event;
           }}
-          onSave3={(vstatus) => {
-            setStatus([...status, { vstatus, id: clicked }]);
-            setClicked(null);
+          avspe={() => {
+            return eventForDate(clicked).spe;
           }}
-          onSave4={(title, vspe, vtime, vstatus) =>{
-            agendamentoUpdate(clicked, title, vspe, vtime, vstatus)
-            setClicked(null);
+          avtime={() => {
+            return eventForDate(clicked).time;
+          }}
+          astatus={() => {
+            return eventForDate(clicked).status;
           }}
         />
       )}
-      {clicked && eventForDate(clicked) && isAut(true) && (
+      {/* {clicked && eventForDate(clicked) && isAut(true) && (
         <DeleteEventModal
           eventText={
             eventForDate(clicked).title +
             " " +
-            eventForDate1(clicked).vspe +
+            eventForDate(clicked).vspe +
             " " +
-            eventForDate2(clicked).vtime
+            eventForDate(clicked).vtime
           }
           onClose={() => setClicked(null)}
           onDelete={() => {
-            setEvents(events.filter((e) => e.id !== clicked));
-            setSpe(spe.filter((e) => e.id !== clicked));
-            setTime(time.filter((e) => e.id !== clicked));
-            setStatus(status.filter((e) => e.id !== clicked));
-            setClicked(null);
+            agendamentoDelete(clicked).then(() => {
+              setDays(days.filter((e) => e.id !== clicked));
+              setClicked(null);
+            });
           }}
         />
-      )}
+      )} */}
     </>
   );
 };

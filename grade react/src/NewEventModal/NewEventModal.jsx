@@ -3,21 +3,22 @@ import React, { useState } from "react";
 export const NewEventModal = ({
   onSave,
   onClose,
-  onSave1,
-  onSave2,
-  onSave3,
-  onSave4,
+  onDelete,
+  atitle,
+  avspe,
+  avtime,
+  avstatus,
 }) => {
-  let [title, setTitle] = useState("");
-  let [vspe, setSpe] = useState("");
-  let [vtime, setTime] = useState("");
-  let [vstatus, setStatus] = useState("1");
+  let [title, setTitle] = useState(atitle);
+  let [vspe, setSpe] = useState(avspe);
+  let [vtime, setTime] = useState(avtime);
+  let [vstatus, setStatus] = useState(avstatus);
   let [error, setError] = useState(false);
   // vstatus = "1";
   render: return (
     <>
       <div id="newEventModal">
-        <h2>Novo Evento</h2>
+        <h2>Evento</h2>
 
         <input
           className={error ? "error" : ""}
@@ -55,11 +56,7 @@ export const NewEventModal = ({
         </select>
         <button
           onClick={() => {
-            onSave(title);
-            onSave1(vspe);
-            onSave2(vtime);
-            onSave3(vstatus);
-            onSave4(title, vspe, vtime, vstatus);
+            onSave(title, vspe, vtime, vstatus);
           }}
           id="saveButton"
         >
@@ -68,6 +65,9 @@ export const NewEventModal = ({
 
         <button onClick={onClose} id="cancelButton">
           Cancelar
+        </button>
+        <button onClick={onDelete} id="deleteButton">
+          Deletar
         </button>
       </div>
 
