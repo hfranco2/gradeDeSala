@@ -1,0 +1,339 @@
+body {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(235, 235, 235);
+}
+button {
+  margin-right: 2.5px;
+  margin-left: 2.5px;
+  width: 75px;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px gray;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+a {
+  margin-right: 2.5px;
+  margin-left: 2.5px;
+  margin-top: 5px;
+  width: 75px;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px gray;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+#orange {
+  color: orange;
+  text-decoration: underline;
+}
+#blue {
+  color: blue;
+  text-decoration: underline;
+}
+#green {
+  color: green;
+  text-decoration: underline;
+}
+#red {
+  color: red;
+  text-decoration: underline;
+}
+#container {
+  width: 1114px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#box {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+#cabecalho {
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 20% 40% 40%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#titulo {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+  font-size: large;
+}
+#lista {
+  margin-left: 200px;
+  font-size: 14px;
+}
+#weekdays {
+  width: 100%;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  color: #247ba0;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#weekdays2 {
+  width: 1000px;
+  height: 10px;
+  /* margin-left: 100x; */
+  display: grid;
+  color: #090794;
+  font-weight: bold;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 1fr;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+#weekdays2 div {
+  width: 300px;
+  height: 50px;
+  margin-left: -40px;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#periodo {
+  display: flex;
+  width: 910px;
+  position: left;
+  font-size: 13px;
+}
+.pp {
+  background-color: rgb(21, 49, 100, 0.8);
+
+  width: 60px;
+  text-align: center;
+  color: white;
+  border-radius: 3px;
+  margin-left: 37px;
+  margin-right: 31px;
+}
+
+#logo {
+  background-image: url("./src/App/logoAme.png");
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+}
+#blank {
+  width: 40px;
+  height: -50px;
+  background-color: white;
+}
+
+#calendar {
+  width: 1000px;
+  border: solid 1px black;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: solid 1px black;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+}
+li {
+  border-top: solid 1px black;
+  text-align: center;
+  font-weight: bold;
+}
+#localizacao {
+  display: flex;
+  flex-direction: column;
+  border-top: solid 1px black;
+
+  border-left: solid 1px black;
+}
+.salas {
+  width: 100px;
+  padding: 10px;
+  height: 100px;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: rgb(228, 234, 236);
+  margin: 0px;
+  box-shadow: 0px 0px 3px #cbd4c2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 1px black;
+}
+.salas div {
+  color: red;
+  text-align: center;
+}
+.day,
+.day1,
+.day2,
+.day3,
+.day4 {
+  width: 100px;
+  padding: 10px;
+  height: 100px;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: white;
+  margin: 0px;
+  box-shadow: 0px 0px 3px #cbd4c2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: solid 1px black;
+  border-bottom: solid 1px black;
+}
+.day1 {
+  color: red;
+}
+.day:hover,
+.day1:hover {
+  background-color: #e8faed;
+}
+
+.day + .currentDay,
+.day1 + .currentDay {
+  background-color: #e8f4fa;
+}
+.event,
+.event1,
+.event2,
+.event3,
+.event4 {
+  font-size: 20px;
+  padding: 3px;
+  background-color: #58bae4;
+
+  border-radius: 5px;
+  max-height: 55px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.event1 {
+  color: red;
+}
+.spe,
+.spe1,
+.spe2,
+.spe3,
+.spe4 {
+  font-size: 15px;
+  padding: 3px;
+  font-weight: bold;
+  text-decoration: underline;
+  border-radius: 5px;
+  max-height: 55px;
+  overflow: hidden;
+  text-align: center;
+}
+.time,
+.time1,
+.time2,
+.time3,
+.time4 {
+  font-size: 12px;
+  padding: 3px;
+  font-weight: bold;
+  border-radius: 5px;
+  max-height: 55px;
+  overflow: hidden;
+  text-align: center;
+}
+.event1,
+.time1,
+.spe1 {
+  color: red;
+}
+.event2,
+.time2,
+.spe2 {
+  color: blue;
+}
+.event3,
+.time3,
+.spe3 {
+  color: green;
+}
+.event4,
+.time4,
+.spe4 {
+  color: orange;
+}
+.padding {
+  cursor: default !important;
+  background-color: #fffcff !important;
+  box-shadow: none !important;
+}
+#newEventModal,
+#deleteEventModal {
+  z-index: 20;
+  padding: 25px;
+  background-color: #e8f4fa;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 5px;
+  width: 350px;
+  top: 100px;
+  left: calc(50% - 175px);
+  position: fixed;
+  font-family: sans-serif;
+}
+#eventTitleInput,
+#eventTitleInput1,
+#eventTitleInput2 {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 3px gray;
+}
+#eventTitleInput.error {
+  border: 2px solid red;
+}
+#cancelButton,
+#deleteButton {
+  background-color: #d36c6c;
+}
+#saveButton,
+#closeButton {
+  background-color: #92a1d1;
+}
+#eventText {
+  font-size: 14px;
+}
+#modalBackDrop {
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+}
