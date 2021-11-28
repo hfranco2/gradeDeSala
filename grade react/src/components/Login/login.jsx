@@ -3,11 +3,26 @@ import { useHistory } from "react-router";
 import StoreContext from "../Store/Context";
 import UIButton from "../UI/Button/Button";
 import "../Login/login.css";
+import axios from "axios";
 
 function initialState() {
   return { user: "", password: "" };
 }
+const uri = "http://localhost:4001";
 
+const loginApi = async ({ user, password }) => {
+  // Send GET request to 'books/all' endpoint
+
+  let retorno = await axios
+    .put(`${uri}/user/login`, {
+      usuario: user,
+      senha: password,
+    })
+    .catch((erro) => {
+      console.log("erro da api" + erro);
+    });
+  return await retorno.data;
+};
 function login({ user, password }) {
   if (user === "admin" && password === "admin") {
     return { token: "1234" };
@@ -32,14 +47,11 @@ const UserLogin = () => {
 
   function onSubmit(event) {
     event.preventDefault();
+    loginApi(values).then((res) => {
+      setToken(res.token);
 
-    const { token, error } = login(values);
-
-    if (token) {
-      setToken(token);
       return history.push("/");
-    }
-
+    });
     setError(error);
     setValues(initialState);
   }

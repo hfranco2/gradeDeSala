@@ -14,7 +14,7 @@ router.delete('/delete', userRoutes.userDelete)
 
 router.get('/usuario', userRoutes.userByUsuario)
 
-router.get('/login', userRoutes.userLogin)
+router.put('/login', userRoutes.userLogin)
 
 router.put('/changepassword', userRoutes.userChangePassword)
 

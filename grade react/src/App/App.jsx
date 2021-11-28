@@ -164,7 +164,7 @@ export const App = () => {
   function isAut() {
     let tk = null;
     tk = JSON.parse(sessionStorage.getItem("token"));
-    if (tk == 1234) {
+    if (tk != undefined) {
       return true;
     } else {
       return false;
